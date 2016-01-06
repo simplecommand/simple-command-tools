@@ -14,4 +14,9 @@ public class AppConfig {
         return new LengthValidator();
     }
 
+    @Bean(name = { "loginService" })
+    @Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
+    public LoginService loginService() {
+        return new LoginService();
+    }
 }

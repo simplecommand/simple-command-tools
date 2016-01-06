@@ -15,11 +15,18 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class AppConfigTest {
 
     @Resource
-    LengthValidator lengthValidator;
+    LengthValidator<LoginParameter> lengthValidator;
+    
+    @Resource
+    LoginService loginService;
 
     @Test
     public void lengthValidatorTest() throws Exception {
         assertThat(lengthValidator, CoreMatchers.notNullValue());
     }
 
+    @Test
+    public void loginServiceTest() throws Exception {
+        assertThat(loginService, CoreMatchers.notNullValue());
+    }
 }
