@@ -10,8 +10,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.test.util.ReflectionTestUtils;
 
-import de.mwolff.examples.passwordvalidator.PasswordParameter;
-
 public class PasswordParameterTest {
 
     private PasswordParameter loginParameter;

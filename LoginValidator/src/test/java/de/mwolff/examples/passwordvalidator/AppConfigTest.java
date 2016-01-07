@@ -10,21 +10,16 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import de.mwolff.examples.passwordvalidator.AppConfig;
-import de.mwolff.examples.passwordvalidator.LengthValidator;
-import de.mwolff.examples.passwordvalidator.PasswordParameter;
-import de.mwolff.examples.passwordvalidator.PasswordService;
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = AppConfig.class)
 public class AppConfigTest {
 
     @Resource
     LengthValidator<PasswordParameter> lengthValidator;
-    
+
     @Resource
     PasswordService passwordService;
-    
+
     @Resource
     PasswordParameter passwordParameter;
 

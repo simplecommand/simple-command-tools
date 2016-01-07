@@ -13,16 +13,16 @@ import org.mockito.Mock;
 import de.mwolff.framework.rules.MockRule;
 
 public class TestMockRule {
-	
-	@Rule
-	public TestRule mockRule = new MockRule(this);
 
-	@Mock
-	public List<String> baz;
+    @Rule
+    public TestRule mockRule = new MockRule(this);
 
-	@Test
-	public void testBaz() throws Exception {
-		when(this.baz.size()).thenReturn(2);
-		assertEquals(2, this.baz.size());
-	}
+    @Mock
+    public List<String> baz;
+
+    @Test
+    public void testBaz() throws Exception {
+        when(this.baz.size()).thenReturn(2);
+        assertEquals(2, this.baz.size());
+    }
 }

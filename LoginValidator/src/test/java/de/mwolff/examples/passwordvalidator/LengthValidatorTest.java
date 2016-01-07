@@ -7,9 +7,6 @@ import java.util.List;
 import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 
-import de.mwolff.examples.passwordvalidator.LengthValidator;
-import de.mwolff.examples.passwordvalidator.PasswordParameter;
-
 public class LengthValidatorTest {
 
     @Test
