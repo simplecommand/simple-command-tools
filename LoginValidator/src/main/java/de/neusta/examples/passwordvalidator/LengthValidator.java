@@ -26,6 +26,7 @@ import de.mwolff.commons.command.iface.CommandException;
 
 @Component
 public class LengthValidator<T extends PasswordParameter> extends DefaultCommand<T> {
+    
 
     private int injectedLength;
 

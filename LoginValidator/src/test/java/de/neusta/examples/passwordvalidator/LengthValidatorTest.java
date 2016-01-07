@@ -41,6 +41,7 @@ import de.neusta.framework.rules.MockRule;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:application.xml")
 public class LengthValidatorTest {
+    
 
     @Rule
     public TestRule mockRule = new MockRule(this);

@@ -26,11 +26,6 @@ import org.springframework.context.annotation.Scope;
 @Configuration
 public class AppConfig {
 
-//    @Bean(name = { "lengthValidator" })
-//    @Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
-//    public LengthValidator<PasswordParameter> lengthValidator() {
-//        return new LengthValidator<PasswordParameter>();
-//    }
 
     @Bean(name = { "passwordService" })
     @Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
