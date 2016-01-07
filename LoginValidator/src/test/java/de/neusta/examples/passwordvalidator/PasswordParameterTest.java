@@ -16,7 +16,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
  */
-package de.mwolff.examples.passwordvalidator;
+package de.neusta.examples.passwordvalidator;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -27,6 +27,8 @@ import org.hamcrest.CoreMatchers;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.test.util.ReflectionTestUtils;
+
+import de.neusta.examples.passwordvalidator.PasswordParameter;
 
 public class PasswordParameterTest {
 

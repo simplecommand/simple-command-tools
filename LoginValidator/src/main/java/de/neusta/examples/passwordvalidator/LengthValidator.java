@@ -16,50 +16,28 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
  */
-package de.mwolff.examples.passwordvalidator;
-
-import java.util.ArrayList;
-import java.util.List;
+package de.neusta.examples.passwordvalidator;
 
 import org.springframework.stereotype.Component;
 
-import de.mwolff.commons.command.iface.Context;
+import de.mwolff.commons.command.DefaultCommand;
 
 @Component
-public class PasswordParameter implements Context {
+public class LengthValidator<T extends PasswordParameter> extends DefaultCommand<T> {
 
-    private String loginName;
-    private String password;
-    private int length;
-
-    private final List<String> errors = new ArrayList<String>();
-
-    public void setLoginName(String loginName) {
-        this.loginName = loginName;
+    @Override
+    public void execute(PasswordParameter loginParameter) {
+        validateLength(loginParameter);
     }
 
-    public String getLoginName() {
-        return this.loginName;
+    private static void validateLength(PasswordParameter passwordParameter) {
+        final int characters = passwordParameter.getLength();
+        if (passwordParameter.getPassword().length() < characters) {
+            passwordParameter.getErrors().add(constructErrorMessage(characters));
+        }
     }
 
-    public List<String> getErrors() {
-        return errors;
+    private static String constructErrorMessage(int length) {
+        return String.format("The Password has to be as least %d Characters.", length);
     }
-
-    public void setLength(int length) {
-        this.length = length;
-    }
-
-    public int getLength() {
-        return this.length;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getPassword() {
-        return this.password;
-    }
-
 }

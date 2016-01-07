@@ -16,7 +16,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
  */
-package de.mwolff.framework.rules;
+package de.neusta.framework.rules;
 
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;

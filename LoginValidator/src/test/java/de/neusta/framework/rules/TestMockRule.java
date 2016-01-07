@@ -16,7 +16,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
  */
-package de.mwolff.frameword.rules;
+package de.neusta.framework.rules;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
@@ -28,7 +28,7 @@ import org.junit.Test;
 import org.junit.rules.TestRule;
 import org.mockito.Mock;
 
-import de.mwolff.framework.rules.MockRule;
+import de.neusta.framework.rules.MockRule;
 
 public class TestMockRule {
 

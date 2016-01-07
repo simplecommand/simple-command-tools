@@ -16,47 +16,50 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
  */
-package de.mwolff.examples.passwordvalidator;
+package de.neusta.examples.passwordvalidator;
 
+import java.util.ArrayList;
 import java.util.List;
-
-import javax.annotation.Resource;
 
 import org.springframework.stereotype.Component;
 
+import de.mwolff.commons.command.iface.Context;
+
 @Component
-public class PasswordService {
+public class PasswordParameter implements Context {
 
-    List<String> errors = null;
+    private String loginName;
+    private String password;
+    private int length;
 
-    @Resource
-    LengthValidator<PasswordParameter> lengthValidator;
+    private final List<String> errors = new ArrayList<String>();
 
-    @Resource
-    PasswordParameter passwordParameter;
+    public void setLoginName(String loginName) {
+        this.loginName = loginName;
+    }
+
+    public String getLoginName() {
+        return this.loginName;
+    }
 
     public List<String> getErrors() {
         return errors;
     }
 
-    public boolean valdidate(String password) {
-
-        prepareParameters(password);
-        lengthValidator.execute(passwordParameter);
-        return getErrorResult();
+    public void setLength(int length) {
+        this.length = length;
     }
 
-    private void prepareParameters(String password) {
-        passwordParameter.setLength(12);
-        passwordParameter.setPassword(password);
+    public int getLength() {
+        return this.length;
     }
 
-    private boolean getErrorResult() {
-        boolean result = true;
-        errors = passwordParameter.getErrors();
-        if (!errors.isEmpty()) {
-            result = false;
-        }
-        return result;
+    public void setPassword(String password) {
+        this.password = password;
     }
+
+    public String getPassword() {
+        return this.password;
+    }
+
 }

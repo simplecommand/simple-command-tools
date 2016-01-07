@@ -16,7 +16,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
  */
-package de.mwolff.examples.passwordvalidator;
+package de.neusta.examples.passwordvalidator;
 
 import static org.junit.Assert.assertThat;
 
@@ -24,6 +24,9 @@ import java.util.List;
 
 import org.hamcrest.CoreMatchers;
 import org.junit.Test;
+
+import de.neusta.examples.passwordvalidator.LengthValidator;
+import de.neusta.examples.passwordvalidator.PasswordParameter;
 
 public class LengthValidatorTest {
 

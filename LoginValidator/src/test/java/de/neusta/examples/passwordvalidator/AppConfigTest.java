@@ -16,11 +16,9 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
  */
-package de.mwolff.examples.passwordvalidator;
+package de.neusta.examples.passwordvalidator;
 
 import static org.junit.Assert.assertThat;
-
-import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -30,9 +28,17 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import de.neusta.examples.passwordvalidator.AppConfig;
+import de.neusta.examples.passwordvalidator.LengthValidator;
+import de.neusta.examples.passwordvalidator.PasswordParameter;
+import de.neusta.examples.passwordvalidator.PasswordService;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = AppConfig.class)
-public class PasswordServiceTest {
+public class AppConfigTest {
+
+    @Resource
+    LengthValidator<PasswordParameter> lengthValidator;
 
     @Resource
     PasswordService passwordService;
@@ -41,33 +47,18 @@ public class PasswordServiceTest {
     PasswordParameter passwordParameter;
 
     @Test
-    public void validateNoError() throws Exception {
-
-        // Given
-        final String password = "KlartextInDerDatenbank";
-
-        // When
-        final List<String> errors = null;
-        final boolean result = passwordService.valdidate(password);
-        // Then
-        assertThat(result, CoreMatchers.is(true));
-        assertThat(errors, CoreMatchers.nullValue());
+    public void lengthValidatorTest() throws Exception {
+        assertThat(lengthValidator, CoreMatchers.notNullValue());
     }
 
     @Test
-    public void validateError() throws Exception {
+    public void loginServiceTest() throws Exception {
+        assertThat(passwordService, CoreMatchers.notNullValue());
+    }
 
-        // Given
-        final String password = "Klartext";
-
-        // When
-        List<String> errors = null;
-        final boolean result = passwordService.valdidate(password);
-        errors = passwordService.getErrors();
-
-        // Then
-        assertThat(result, CoreMatchers.is(false));
-        assertThat(errors.size(), CoreMatchers.is(1));
+    @Test
+    public void passwordParameterTest() throws Exception {
+        assertThat(passwordParameter, CoreMatchers.notNullValue());
     }
 
 }
