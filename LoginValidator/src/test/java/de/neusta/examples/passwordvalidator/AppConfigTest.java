@@ -28,10 +28,7 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import de.neusta.examples.passwordvalidator.AppConfig;
-import de.neusta.examples.passwordvalidator.LengthValidator;
-import de.neusta.examples.passwordvalidator.PasswordParameter;
-import de.neusta.examples.passwordvalidator.PasswordService;
+import de.neusta.configurator.PasswordConfigurator;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = AppConfig.class)
@@ -45,6 +42,9 @@ public class AppConfigTest {
 
     @Resource
     PasswordParameter passwordParameter;
+
+    @Resource
+    PasswordConfigurator passwordConfigurator;
 
     @Test
     public void lengthValidatorTest() throws Exception {
@@ -61,4 +61,8 @@ public class AppConfigTest {
         assertThat(passwordParameter, CoreMatchers.notNullValue());
     }
 
+    @Test
+    public void testName() throws Exception {
+        assertThat(passwordConfigurator, CoreMatchers.notNullValue());
+    }
 }

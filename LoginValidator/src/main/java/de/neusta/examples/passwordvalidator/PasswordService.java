@@ -42,12 +42,11 @@ public class PasswordService {
     public boolean valdidate(String password) {
 
         prepareParameters(password);
-        lengthValidator.execute(passwordParameter);
+        lengthValidator.executeAsChain(passwordParameter);
         return getErrorResult();
     }
 
     private void prepareParameters(String password) {
-        passwordParameter.setLength(12);
         passwordParameter.setPassword(password);
     }
 

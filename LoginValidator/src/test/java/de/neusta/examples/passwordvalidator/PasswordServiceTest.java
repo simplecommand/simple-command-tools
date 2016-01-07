@@ -30,10 +30,6 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import de.neusta.examples.passwordvalidator.AppConfig;
-import de.neusta.examples.passwordvalidator.PasswordParameter;
-import de.neusta.examples.passwordvalidator.PasswordService;
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = AppConfig.class)
 public class PasswordServiceTest {

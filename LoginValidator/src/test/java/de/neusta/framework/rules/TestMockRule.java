@@ -28,8 +28,6 @@ import org.junit.Test;
 import org.junit.rules.TestRule;
 import org.mockito.Mock;
 
-import de.neusta.framework.rules.MockRule;
-
 public class TestMockRule {
 
     @Rule
