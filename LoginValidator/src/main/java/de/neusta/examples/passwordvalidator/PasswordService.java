@@ -24,13 +24,15 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Component;
 
+import de.mwolff.command.chainbuilder.InjectionChainBuilder;
+
 @Component
 public class PasswordService {
 
     List<String> errors = null;
 
     @Resource
-    LengthValidator<PasswordParameter> lengthValidator;
+    InjectionChainBuilder<PasswordParameter> injectionChainBuilder;
 
     @Resource
     PasswordParameter passwordParameter;
@@ -42,7 +44,7 @@ public class PasswordService {
     public boolean valdidate(String password) {
 
         prepareParameters(password);
-        lengthValidator.executeAsChain(passwordParameter);
+        injectionChainBuilder.executeAsChain(passwordParameter);
         return getErrorResult();
     }
 

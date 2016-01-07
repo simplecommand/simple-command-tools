@@ -28,28 +28,23 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import de.neusta.configurator.PasswordConfigurator;
+import de.mwolff.command.chainbuilder.InjectionChainBuilder;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = AppConfig.class)
+@ContextConfiguration("file:src/test/resources/application.xml")
 public class AppConfigTest {
-
-    @Resource
-    LengthValidator<PasswordParameter> lengthValidator;
 
     @Resource
     PasswordService passwordService;
 
     @Resource
     PasswordParameter passwordParameter;
-
+    
     @Resource
-    PasswordConfigurator passwordConfigurator;
-
-    @Test
-    public void lengthValidatorTest() throws Exception {
-        assertThat(lengthValidator, CoreMatchers.notNullValue());
-    }
+    LengthValidator<PasswordParameter> lengthValidator;
+    
+    @Resource
+    InjectionChainBuilder<PasswordParameter> injectionChainBuilder;
 
     @Test
     public void loginServiceTest() throws Exception {
@@ -62,7 +57,13 @@ public class AppConfigTest {
     }
 
     @Test
-    public void testName() throws Exception {
-        assertThat(passwordConfigurator, CoreMatchers.notNullValue());
+    public void lengthValidatorTest() throws Exception {
+        assertThat(lengthValidator, CoreMatchers.notNullValue());
     }
+    
+    @Test
+    public void injectionChainBuilder() throws Exception {
+        assertThat(injectionChainBuilder, CoreMatchers.notNullValue());
+    }
+
 }

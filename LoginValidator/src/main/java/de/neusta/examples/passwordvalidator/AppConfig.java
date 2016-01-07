@@ -23,27 +23,19 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
-import de.neusta.configurator.PasswordConfigurator;
-
 @Configuration
 public class AppConfig {
 
-    @Bean(name = { "lengthValidator" })
-    @Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
-    public LengthValidator<PasswordParameter> lengthValidator() {
-        return new LengthValidator<PasswordParameter>();
-    }
+//    @Bean(name = { "lengthValidator" })
+//    @Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
+//    public LengthValidator<PasswordParameter> lengthValidator() {
+//        return new LengthValidator<PasswordParameter>();
+//    }
 
     @Bean(name = { "passwordService" })
     @Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
     public PasswordService passwordService() {
         return new PasswordService();
-    }
-
-    @Bean(name = { "passwordConfigurator" })
-    @Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
-    public PasswordConfigurator passwordConfigurator() {
-        return new PasswordConfigurator();
     }
 
     @Bean(name = { "passwordParameter" })

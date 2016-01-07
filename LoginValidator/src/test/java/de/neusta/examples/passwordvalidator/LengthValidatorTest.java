@@ -19,38 +19,41 @@
 package de.neusta.examples.passwordvalidator;
 
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.when;
 
 import java.util.List;
+
+import javax.annotation.Resource;
 
 import org.hamcrest.CoreMatchers;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+import org.junit.rules.TestRule;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.util.ReflectionTestUtils;
 
 import de.mwolff.commons.command.iface.CommandException;
-import de.neusta.configurator.PasswordConfigurator;
+import de.neusta.framework.rules.MockRule;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("classpath:application.xml")
 public class LengthValidatorTest {
 
-    @InjectMocks
-    LengthValidator<PasswordParameter> lengthValidator;
+    @Rule
+    public TestRule mockRule = new MockRule(this);
 
-    @Mock
-    PasswordConfigurator passwordConfigurator;
+    @InjectMocks
+    @Resource
+    LengthValidator<PasswordParameter> lengthValidator;
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
     @Test
     public void validateFails() throws Exception {
-        when(passwordConfigurator.loadConfiguration()).thenReturn(true);
-        when(passwordConfigurator.getPasswordLength()).thenReturn(20);
         final PasswordParameter loginParameter = new PasswordParameter();
         loginParameter.setPassword("short to Validate.");
         lengthValidator.execute(loginParameter);
@@ -62,7 +65,7 @@ public class LengthValidatorTest {
     @Test
     public void validateThrowsException() throws Exception {
         thrown.expect(CommandException.class);
-        when(passwordConfigurator.loadConfiguration()).thenReturn(false);
+        ReflectionTestUtils.setField(lengthValidator, "injectedLength", 0);
         final PasswordParameter loginParameter = new PasswordParameter();
         loginParameter.setPassword("Long enough to Validate.");
         lengthValidator.execute(loginParameter);
@@ -70,8 +73,6 @@ public class LengthValidatorTest {
 
     @Test
     public void validate() throws Exception {
-        when(passwordConfigurator.loadConfiguration()).thenReturn(true);
-        when(passwordConfigurator.getPasswordLength()).thenReturn(12);
         final PasswordParameter loginParameter = new PasswordParameter();
         loginParameter.setPassword("Long enough to Validate.");
         lengthValidator.execute(loginParameter);

@@ -31,7 +31,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:application.xml")
+@ContextConfiguration("file:src/test/resources/application.xml")
 public class PasswordServiceTest {
 
     @Resource
@@ -49,6 +49,7 @@ public class PasswordServiceTest {
         // When
         final List<String> errors = null;
         final boolean result = passwordService.valdidate(password);
+        
         // Then
         assertThat(result, CoreMatchers.is(true));
         assertThat(errors, CoreMatchers.nullValue());
@@ -69,5 +70,4 @@ public class PasswordServiceTest {
         assertThat(result, CoreMatchers.is(false));
         assertThat(errors.size(), CoreMatchers.is(1));
     }
-
 }
