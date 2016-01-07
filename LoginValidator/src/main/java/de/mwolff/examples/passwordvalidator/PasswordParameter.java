@@ -1,11 +1,14 @@
-package de.mwolff.examples.loginvalidator;
+package de.mwolff.examples.passwordvalidator;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import de.mwolff.commons.command.iface.Context;
 
-public class LoginParameter implements Context {
+@Component
+public class PasswordParameter implements Context {
 
     private String loginName;
     private String password;

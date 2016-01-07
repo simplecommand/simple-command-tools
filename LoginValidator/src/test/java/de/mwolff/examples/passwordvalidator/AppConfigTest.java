@@ -1,4 +1,4 @@
-package de.mwolff.examples.loginvalidator;
+package de.mwolff.examples.passwordvalidator;
 
 import static org.junit.Assert.assertThat;
 
@@ -10,15 +10,23 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import de.mwolff.examples.passwordvalidator.AppConfig;
+import de.mwolff.examples.passwordvalidator.LengthValidator;
+import de.mwolff.examples.passwordvalidator.PasswordParameter;
+import de.mwolff.examples.passwordvalidator.PasswordService;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = AppConfig.class)
 public class AppConfigTest {
 
     @Resource
-    LengthValidator<LoginParameter> lengthValidator;
+    LengthValidator<PasswordParameter> lengthValidator;
     
     @Resource
-    LoginService loginService;
+    PasswordService passwordService;
+    
+    @Resource
+    PasswordParameter passwordParameter;
 
     @Test
     public void lengthValidatorTest() throws Exception {
@@ -27,6 +35,12 @@ public class AppConfigTest {
 
     @Test
     public void loginServiceTest() throws Exception {
-        assertThat(loginService, CoreMatchers.notNullValue());
+        assertThat(passwordService, CoreMatchers.notNullValue());
     }
+
+    @Test
+    public void passwordParameterTest() throws Exception {
+        assertThat(passwordParameter, CoreMatchers.notNullValue());
+    }
+
 }

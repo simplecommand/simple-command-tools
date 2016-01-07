@@ -1,4 +1,4 @@
-package de.mwolff.examples.loginvalidator;
+package de.mwolff.examples.passwordvalidator;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -10,13 +10,15 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.test.util.ReflectionTestUtils;
 
-public class LoginParameterTest {
+import de.mwolff.examples.passwordvalidator.PasswordParameter;
 
-    private LoginParameter loginParameter;
+public class PasswordParameterTest {
+
+    private PasswordParameter loginParameter;
 
     @Before
     public void setUp() {
-        loginParameter = new LoginParameter();
+        loginParameter = new PasswordParameter();
     }
 
     @Test

@@ -1,4 +1,4 @@
-package de.mwolff.examples.loginvalidator;
+package de.mwolff.examples.passwordvalidator;
 
 import static org.junit.Assert.assertThat;
 
@@ -7,12 +7,15 @@ import java.util.List;
 import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 
+import de.mwolff.examples.passwordvalidator.LengthValidator;
+import de.mwolff.examples.passwordvalidator.PasswordParameter;
+
 public class LengthValidatorTest {
 
     @Test
     public void testValidateFails() throws Exception {
-        final LengthValidator<LoginParameter> lengthValidator = new LengthValidator<LoginParameter>();
-        final LoginParameter loginParameter = new LoginParameter();
+        final LengthValidator<PasswordParameter> lengthValidator = new LengthValidator<PasswordParameter>();
+        final PasswordParameter loginParameter = new PasswordParameter();
         loginParameter.setLength(19);
         loginParameter.setPassword("short to Validate.");
         lengthValidator.execute(loginParameter);
@@ -23,8 +26,8 @@ public class LengthValidatorTest {
 
     @Test
     public void testValidate() throws Exception {
-        final LengthValidator<LoginParameter> lengthValidator = new LengthValidator<LoginParameter>();
-        final LoginParameter loginParameter = new LoginParameter();
+        final LengthValidator<PasswordParameter> lengthValidator = new LengthValidator<PasswordParameter>();
+        final PasswordParameter loginParameter = new PasswordParameter();
         loginParameter.setLength(19);
         loginParameter.setPassword("Long enough to Validate.");
         lengthValidator.execute(loginParameter);
