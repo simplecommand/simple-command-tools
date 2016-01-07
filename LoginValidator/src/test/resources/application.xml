@@ -19,13 +19,18 @@
 	<bean class="de.neusta.examples.passwordvalidator.AppConfig" />
 
 	<bean name="lengthValidator" class="de.neusta.examples.passwordvalidator.LengthValidator">
-		<property name="injectedLength" value="${lengthvalidator.length}" />
+		<property name="length" value="${lengthvalidator.length}" />
 	</bean>
 	
+    <bean name="capitalValidator" class="de.neusta.examples.passwordvalidator.CapitalValidator">
+        <property name="countCapital" value="${capitalvalidator.length}" />
+    </bean>
+
     <bean name="injectionChainBuilder" class="de.mwolff.command.chainbuilder.InjectionChainBuilder">
      <property name="commands">
         <list>
             <ref bean="lengthValidator"/>
+            <ref bean="capitalValidator"/>
         </list>
     </property>
 

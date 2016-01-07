@@ -29,6 +29,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.util.ReflectionTestUtils;
+
+import de.mwolff.command.chainbuilder.InjectionChainBuilder;
+import de.mwolff.commons.command.iface.Command;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/test/resources/application.xml")
@@ -49,7 +53,7 @@ public class PasswordServiceTest {
         // When
         final List<String> errors = null;
         final boolean result = passwordService.valdidate(password);
-        
+
         // Then
         assertThat(result, CoreMatchers.is(true));
         assertThat(errors, CoreMatchers.nullValue());
@@ -59,7 +63,7 @@ public class PasswordServiceTest {
     public void validateError() throws Exception {
 
         // Given
-        final String password = "Klartext";
+        final String password = "KlarText";
 
         // When
         List<String> errors = null;
@@ -69,5 +73,15 @@ public class PasswordServiceTest {
         // Then
         assertThat(result, CoreMatchers.is(false));
         assertThat(errors.size(), CoreMatchers.is(1));
+    }
+
+    @SuppressWarnings("unchecked")
+    @Test
+    public void atLeastTwoValidatorsInjected() throws Exception {
+        final InjectionChainBuilder<PasswordParameter> builder = (InjectionChainBuilder<PasswordParameter>) ReflectionTestUtils
+                .getField(passwordService, "injectionChainBuilder");
+        final List<Command<PasswordParameter>> commands = (List<Command<PasswordParameter>>) ReflectionTestUtils
+                .getField(builder, "commands");
+        assertThat(commands.size(), CoreMatchers.is(2));
     }
 }

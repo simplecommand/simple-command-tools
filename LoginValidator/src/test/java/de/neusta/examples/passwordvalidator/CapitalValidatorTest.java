@@ -40,14 +40,14 @@ import de.neusta.framework.rules.MockRule;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/test/resources/application.xml")
-public class LengthValidatorTest {
+public class CapitalValidatorTest {
 
     @Rule
     public TestRule mockRule = new MockRule(this);
 
     @InjectMocks
     @Resource
-    LengthValidator<PasswordParameter> lengthValidator;
+    CapitalValidator<PasswordParameter> capitalValidator;
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
@@ -55,27 +55,27 @@ public class LengthValidatorTest {
     @Test
     public void validateFails() throws Exception {
         final PasswordParameter loginParameter = new PasswordParameter();
-        loginParameter.setPassword("short to Validate.");
-        lengthValidator.execute(loginParameter);
+        loginParameter.setPassword("no capital letters");
+        capitalValidator.execute(loginParameter);
         final List<String> errors = loginParameter.getErrors();
         assertThat(errors.isEmpty(), CoreMatchers.is(false));
-        assertThat(errors.get(0), CoreMatchers.is("The Password has to be as least 20 Characters."));
+        assertThat(errors.get(0), CoreMatchers.is("The Password has to be as least 2 capital characters."));
     }
 
     @Test
     public void validateThrowsException() throws Exception {
         thrown.expect(CommandException.class);
-        ReflectionTestUtils.setField(lengthValidator, "length", 0);
+        ReflectionTestUtils.setField(capitalValidator, "countCapital", 0);
         final PasswordParameter loginParameter = new PasswordParameter();
-        loginParameter.setPassword("Long enough to Validate.");
-        lengthValidator.execute(loginParameter);
+        loginParameter.setPassword("two Capital ketter.");
+        capitalValidator.execute(loginParameter);
     }
 
     @Test
     public void validate() throws Exception {
         final PasswordParameter loginParameter = new PasswordParameter();
-        loginParameter.setPassword("Long enough to Validate.");
-        lengthValidator.execute(loginParameter);
+        loginParameter.setPassword("two Capital Letter.");
+        capitalValidator.execute(loginParameter);
         final List<String> errors = loginParameter.getErrors();
         assertThat(errors.isEmpty(), CoreMatchers.is(true));
     }

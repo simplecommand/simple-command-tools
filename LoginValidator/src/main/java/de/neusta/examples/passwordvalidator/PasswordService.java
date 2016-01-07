@@ -1,4 +1,5 @@
 /*
+
     Command Example for the SCF (Simple Command Framework)
     Copyright (C) 2016  Manfred Wolff, neusta software development
 

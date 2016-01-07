@@ -3,7 +3,6 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>mwolff-commons</groupId>
 	<artifactId>Loginvalidator</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<properties>
 		<springframework.version>4.2.0.RELEASE</springframework.version>
 	</properties>
@@ -109,4 +108,5 @@
 
 	</dependencies>
 
+	<version>1.0.0</version>
 </project>

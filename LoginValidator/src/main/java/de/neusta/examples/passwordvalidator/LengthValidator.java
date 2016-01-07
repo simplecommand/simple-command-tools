@@ -26,26 +26,25 @@ import de.mwolff.commons.command.iface.CommandException;
 
 @Component
 public class LengthValidator<T extends PasswordParameter> extends DefaultCommand<T> {
-    
 
-    private int injectedLength;
+    private int length;
 
     @Override
     public void execute(PasswordParameter loginParameter) throws CommandException {
-        if (injectedLength ==  0) {
-          throw new CommandException("The length is not configured yet (validator.properties).");  
+        if (length == 0) {
+            throw new CommandException("The length is not configured yet (validator.properties).");
         }
         validateLength(loginParameter);
     }
 
     @Required
-    public void setInjectedLength(int injectedLength) {
-        this.injectedLength = injectedLength;
+    public void setLength(int length) {
+        this.length = length;
     }
 
-    private void validateLength(PasswordParameter passwordParameter)  {
-        if (passwordParameter.getPassword().length() < injectedLength) {
-            passwordParameter.getErrors().add(constructErrorMessage(injectedLength));
+    private void validateLength(PasswordParameter passwordParameter) {
+        if (passwordParameter.getPassword().length() < length) {
+            passwordParameter.getErrors().add(constructErrorMessage(length));
         }
     }
 

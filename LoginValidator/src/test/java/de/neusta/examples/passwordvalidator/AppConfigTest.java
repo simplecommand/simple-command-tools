@@ -39,10 +39,13 @@ public class AppConfigTest {
 
     @Resource
     PasswordParameter passwordParameter;
-    
+
     @Resource
     LengthValidator<PasswordParameter> lengthValidator;
-    
+
+    @Resource
+    CapitalValidator<PasswordParameter> capitalValidator;
+
     @Resource
     InjectionChainBuilder<PasswordParameter> injectionChainBuilder;
 
@@ -60,7 +63,12 @@ public class AppConfigTest {
     public void lengthValidatorTest() throws Exception {
         assertThat(lengthValidator, CoreMatchers.notNullValue());
     }
-    
+
+    @Test
+    public void capitalValidatorTest() throws Exception {
+        assertThat(capitalValidator, CoreMatchers.notNullValue());
+    }
+
     @Test
     public void injectionChainBuilder() throws Exception {
         assertThat(injectionChainBuilder, CoreMatchers.notNullValue());
