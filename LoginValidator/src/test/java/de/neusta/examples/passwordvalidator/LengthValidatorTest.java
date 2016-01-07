@@ -22,19 +22,30 @@ import static org.junit.Assert.assertThat;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.hamcrest.CoreMatchers;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import de.neusta.examples.passwordvalidator.LengthValidator;
 import de.neusta.examples.passwordvalidator.PasswordParameter;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = AppConfig.class)
 public class LengthValidatorTest {
+    
+    @Resource
+    LengthValidator<PasswordParameter> lengthValidator;
 
+    /**
+     * @throws Exception
+     */
     @Test
     public void testValidateFails() throws Exception {
-        final LengthValidator<PasswordParameter> lengthValidator = new LengthValidator<PasswordParameter>();
         final PasswordParameter loginParameter = new PasswordParameter();
-        loginParameter.setLength(19);
         loginParameter.setPassword("short to Validate.");
         lengthValidator.execute(loginParameter);
         final List<String> errors = loginParameter.getErrors();
@@ -44,9 +55,7 @@ public class LengthValidatorTest {
 
     @Test
     public void testValidate() throws Exception {
-        final LengthValidator<PasswordParameter> lengthValidator = new LengthValidator<PasswordParameter>();
         final PasswordParameter loginParameter = new PasswordParameter();
-        loginParameter.setLength(19);
         loginParameter.setPassword("Long enough to Validate.");
         lengthValidator.execute(loginParameter);
         final List<String> errors = loginParameter.getErrors();

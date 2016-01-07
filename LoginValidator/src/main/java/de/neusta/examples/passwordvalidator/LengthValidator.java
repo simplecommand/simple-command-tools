@@ -18,20 +18,36 @@
  */
 package de.neusta.examples.passwordvalidator;
 
+import java.io.IOException;
+
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Component;
 
 import de.mwolff.commons.command.DefaultCommand;
+import de.mwolff.commons.command.iface.CommandException;
+import de.neusta.configurator.PasswordConfigurator;
 
 @Component
 public class LengthValidator<T extends PasswordParameter> extends DefaultCommand<T> {
+    
+    @Resource
+    PasswordConfigurator passwordConfigurator;
 
     @Override
-    public void execute(PasswordParameter loginParameter) {
-        validateLength(loginParameter);
+    public void execute(PasswordParameter loginParameter) throws CommandException {
+        try {
+            validateLength(loginParameter);
+        } catch (IOException e) {
+            throw new CommandException("Unable to load password configuration (validator.configuration).", e);
+        }
     }
 
-    private static void validateLength(PasswordParameter passwordParameter) {
-        final int characters = passwordParameter.getLength();
+    private void validateLength(PasswordParameter passwordParameter) throws IOException {
+        int characters = 0;
+        if (passwordConfigurator.loadConfiguration()) {
+            characters = passwordConfigurator.getPasswordLength();
+        }        
         if (passwordParameter.getPassword().length() < characters) {
             passwordParameter.getErrors().add(constructErrorMessage(characters));
         }
