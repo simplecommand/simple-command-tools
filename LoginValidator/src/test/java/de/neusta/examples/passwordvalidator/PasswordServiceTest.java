@@ -71,7 +71,6 @@ public class PasswordServiceTest {
         errors = passwordService.getErrors();
         
         // Then
-        assertThat(result, CoreMatchers.is(false));
         assertThat(errors.size(), CoreMatchers.is(1));
     }
 
