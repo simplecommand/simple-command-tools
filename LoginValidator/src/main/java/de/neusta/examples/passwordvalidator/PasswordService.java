@@ -19,6 +19,7 @@
  */
 package de.neusta.examples.passwordvalidator;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -30,7 +31,7 @@ import de.mwolff.command.chainbuilder.InjectionChainBuilder;
 @Component
 public class PasswordService {
 
-    List<String> errors = null;
+    List<String> errors = new ArrayList<String>();
 
     @Resource
     InjectionChainBuilder<PasswordParameter> injectionChainBuilder;
