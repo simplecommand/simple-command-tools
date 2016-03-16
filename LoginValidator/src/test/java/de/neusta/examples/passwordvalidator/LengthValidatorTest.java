@@ -18,7 +18,7 @@
  */
 package de.neusta.examples.passwordvalidator;
 
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 import java.util.List;
 
@@ -28,24 +28,17 @@ import org.hamcrest.CoreMatchers;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-import org.junit.rules.TestRule;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.util.ReflectionTestUtils;
 
 import de.mwolff.commons.command.iface.CommandException;
-import de.neusta.framework.rules.MockRule;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/test/resources/application.xml")
 public class LengthValidatorTest {
 
-    @Rule
-    public TestRule mockRule = new MockRule(this);
-
-    @InjectMocks
     @Resource
     LengthValidator<PasswordParameter> lengthValidator;
 
