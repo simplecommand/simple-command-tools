@@ -31,7 +31,7 @@ import de.mwolff.command.chainbuilder.InjectionChainBuilder;
 @Component
 public class PasswordService {
 
-    List<String> errors = new ArrayList<String>();
+    List<String> errors;
 
     @Resource
     InjectionChainBuilder<PasswordParameter> injectionChainBuilder;
@@ -56,7 +56,7 @@ public class PasswordService {
 
     private boolean getErrorResult() {
         boolean result = true;
-        errors = passwordParameter.getErrors();
+        errors = new ArrayList<String>(passwordParameter.getErrors());
         if (!errors.isEmpty()) {
             result = false;
         }

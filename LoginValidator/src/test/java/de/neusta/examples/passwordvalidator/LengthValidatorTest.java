@@ -58,7 +58,7 @@ public class LengthValidatorTest {
     @Test
     public void validateThrowsException() throws Exception {
         thrown.expect(CommandException.class);
-        ReflectionTestUtils.setField(lengthValidator, "length", 0);
+        lengthValidator.setLength(0);
         final PasswordParameter loginParameter = new PasswordParameter();
         loginParameter.setPassword("Long enough to Validate.");
         lengthValidator.execute(loginParameter);
