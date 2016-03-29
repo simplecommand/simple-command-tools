@@ -21,11 +21,11 @@ package de.neusta.examples.passwordvalidator;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Component;
 
-import de.mwolff.commons.command.DefaultCommand;
+import de.mwolff.commons.command.AbstractDefaultChainCommand;
 import de.mwolff.commons.command.iface.CommandException;
 
 @Component
-public class LengthValidator<T extends PasswordParameter> extends DefaultCommand<T> {
+public class LengthValidator<T extends PasswordParameter> extends AbstractDefaultChainCommand<T> {
 
     private int length;
 

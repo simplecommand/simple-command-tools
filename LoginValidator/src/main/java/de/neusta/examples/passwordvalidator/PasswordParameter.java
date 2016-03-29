@@ -23,10 +23,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import de.mwolff.commons.command.iface.Context;
+import de.mwolff.commons.command.iface.ParameterObject;
 
 @Component
-public class PasswordParameter implements Context {
+public class PasswordParameter implements ParameterObject {
 
     private String loginName;
     private String password;

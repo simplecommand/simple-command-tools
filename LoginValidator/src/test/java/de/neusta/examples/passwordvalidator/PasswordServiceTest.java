@@ -58,6 +58,7 @@ public class PasswordServiceTest {
         assertThat(result, CoreMatchers.is(true));
         assertThat(errors, CoreMatchers.nullValue());
     }
+    
      
     @Test
     public void validateError() throws Exception {
