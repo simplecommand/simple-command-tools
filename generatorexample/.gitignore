@@ -1,3 +1,5 @@
 /target/
 /log/
 /velocity.log
+/test/
+/derby.log
