@@ -1,0 +1,8 @@
+/**
+ * $classcomment
+ *
+ * @author: $author
+ * @version: $version
+ */
+ public class $classname #if($extends) extends $extends#end#if($implements) implements $implements #end{
+ }
