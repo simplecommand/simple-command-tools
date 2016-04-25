@@ -40,7 +40,7 @@ public class ReadConfigurationTest {
 
     @Test
     public void readConfiguration() throws Exception {
-        configuration.setConfiguration("/configuration.properties");
+        configuration.setConfiguration("/configuration.test.properties");
         readConfiguration.execute(configuration);
         assertThat(configuration.getOutputPath(),
                 is("/home/mwolff/windows_shared/mwolffgithub/mwolffgithub/generator/"));

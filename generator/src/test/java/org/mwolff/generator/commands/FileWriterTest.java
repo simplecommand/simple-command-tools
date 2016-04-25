@@ -111,7 +111,7 @@ public class FileWriterTest {
     public PropertyLoader getLoader() throws CommandException {
         PropertyLoader loader = new PropertyLoader();
         try {
-            loader.initialize("/configuration.properties", Methods.CLASSPATH);
+            loader.initialize("/configuration.test.properties", Methods.CLASSPATH);
         } catch (Exception ex) {
             throw new CommandException(ex);
         }

@@ -48,7 +48,7 @@ public class MergeTemplateTest {
     @Test
     public void mergeTemplateWithConfiguration() throws Exception {
         
-        configuration.setConfiguration("/configuration.properties");
+        configuration.setConfiguration("/configuration.test.properties");
         readConfiguration.execute(configuration);
         configuration.setXmlfile("/class.xml");
         readClassStructure.execute(configuration);
