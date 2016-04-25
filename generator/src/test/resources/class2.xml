@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<classes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="classes.xsd">
+
+    <class identifier="GeneratedClassStructure">
+        <package>gen.org.mwolff.generator.commands</package>
+        <classcomment>Structure of a class to generate.</classcomment>
+        <author>generator 0.0.2</author>
+        <version>1.0.0</version>
+        <instancevariables>
+            <instancevariable id="identifier" type="String" scope="private"/>
+            <instancevariable id="extendsString" type="String" scope="private"/>
+            <instancevariable id="implementsString" type="String" scope="private"/>
+            <instancevariable id="classComment" type="String" scope="private"/>
+            <instancevariable id="packageString" type="String" scope="private"/>
+            <instancevariable id="author" type="String" scope="private"/>
+            <instancevariable id="version" type="String" scope="private"/>
+            <instancevariable id="imports" type="String" scope="private" cardinality="one-many"/>
+            <instancevariable id="instanceVariables" type="GeneratedInstanceVariable" scope="protected" cardinality="one-many"/>
+        </instancevariables>
+    </class>
+
+    <class identifier="GeneratedInstanceVariable">
+        <package>gen.org.mwolff.generator.commands</package>
+        <classcomment>Structure of a instancevariable of a class.</classcomment>
+        <author>generator 0.0.2</author>
+        <version>1.0.0</version>
+        <instancevariables>
+            <instancevariable id="modifier" type="String" scope="private"/>
+            <instancevariable id="type" type="String" scope="private"/>
+            <instancevariable id="identifier" type="String" scope="private"/>
+            <instancevariable id="cardinality" type="String" scope="private"/>
+        </instancevariables>
+    </class>
+</classes>   
+

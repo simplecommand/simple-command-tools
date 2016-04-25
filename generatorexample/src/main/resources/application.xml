@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:lang="http://www.springframework.org/schema/lang"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd
+        http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-3.0.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd"
+	default-autowire="byName">
+
+	<!-- enable processing of annotations such as @Autowired and @Configuration -->
+	<context:annotation-config />
+	
+    <bean name="readConfiguration" class="org.mwolff.generator.commands.ReadConfiguration" scope="singleton"/>
+    <bean name="readClassStructure" class="org.mwolff.generator.commands.ReadClassStructure" scope="singleton"/>
+    <bean name="prepareJava" class="org.mwolff.generator.commands.PrepareJava" scope="singleton"/>
+    <bean name="mergeTemplate" class="org.mwolff.generator.commands.MergeTemplate" scope="singleton"/>
+    <bean name="fileWriter" class="org.mwolff.generator.commands.FileWriter" scope="singleton"/>
+    <bean name="configuration" class="org.mwolff.generator.structures.Configuration" scope="prototype"/>
+    <bean name="resolveReferences" class="org.mwolff.generator.commands.SolveReferences"/>
+    
+	<bean name="injectionChainBuilder" class="de.mwolff.command.chainbuilder.InjectionChainBuilder" scope="singleton">
+		<property name="commands">
+			<list>
+                <ref bean="readConfiguration" />
+                <ref bean="readClassStructure" />
+                <ref bean="resolveReferences"/>
+                <ref bean="mergeTemplate" />
+			</list>
+		</property>
+	</bean>
+
+</beans>
