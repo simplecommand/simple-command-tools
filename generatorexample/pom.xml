@@ -18,6 +18,7 @@
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>3.6.8.Final</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.apache.derby</groupId>
 			<artifactId>derby</artifactId>
@@ -116,8 +117,8 @@
 			</plugin>
 			<plugin>
 				<groupId>org.mwolff</groupId>
-				<artifactId>generatorplugin</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
+				<artifactId>generator-maven-plugin</artifactId>
+				<version>1.0.0</version>
 				<executions>
 					<execution>
 						<phase>generate-sources</phase>
@@ -128,41 +129,5 @@
 				</executions>
 			</plugin>
 		</plugins>
-		<pluginManagement>
-			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings 
-					only. It has no influence on the Maven build itself. -->
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											org.apache.maven.plugins
-										</groupId>
-										<artifactId>
-											maven-antrun-plugin
-										</artifactId>
-										<versionRange>
-											[1.7,)
-										</versionRange>
-										<goals>
-											<goal>run</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore></ignore>
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
 	</build>
 </project>
