@@ -1,3 +1,6 @@
+#*
+  This template is part of the simple generator framework.
+*#
 package $classStructure.packageString;
 
 #if ($classStructure.hibernate == "true") 

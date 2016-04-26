@@ -1,3 +1,4 @@
+package gen.org.mwolff.generatorexamples.entity;
 import org.junit.Test;
 
 import runner.SpringRunner;
