@@ -9,6 +9,8 @@ import runner.SpringRunner;
 /**
  * Says "Hi" to the user.
  *
+ * @configurator include-project-dependencies
+ * @requiresDependencyResolution compile+runtime
  */
 @Mojo( name = "generate")
 public class GeneratorMojo extends AbstractMojo
