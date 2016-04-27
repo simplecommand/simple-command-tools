@@ -11,13 +11,13 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-public class GeneratorEntityManagerTest {
+public class GeneratorEntityManagerITest {
 
     @Rule
     public ExpectedException thrown= ExpectedException.none();
 
     @Test
-    public void testEntitySupplier() throws Exception {
+    public void testEntitySupplierITest() throws Exception {
         
         GeneratorEntityManager generatorEntityManager = new GeneratorEntityManager();
         BiFunction<EntityManager, EntityTransaction, String> code = (em, tx) -> {

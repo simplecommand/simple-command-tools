@@ -35,15 +35,14 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-public class EntityTest {
+public class EntityITest {
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
     @Test
-    public void test() throws Exception {
-
-        
+    public void testITest() throws Exception {
+     
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("test");
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
