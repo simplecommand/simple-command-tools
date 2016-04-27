@@ -76,5 +76,4 @@ public class EntityTest {
 
         System.out.format("Adress{id=%s, city=%s}\n", adress.getId(), adress.getCity());
     }
-
 }

@@ -34,13 +34,14 @@ public class PropertyLoaderTest {
     @Test
     public void propertyLoadedFromClasspath() throws Exception {
         propertyLoader.initialize("/example.properties", Methods.CLASSPATH);
-        assertEquals("value", propertyLoader.getProperties().getProperty("key"));
+        assertEquals("value", propertyLoader.getProperty("key"));
+        assertEquals("meine Welt value", propertyLoader.getProperty("Welt"));
     }
 
     @Test
     public void propertyResourceNotExsists() throws Exception {
         thrown.expect(IOException.class);
         propertyLoader.initialize("/notExists.properties", Methods.CLASSPATH);
-        assertEquals(null, propertyLoader.getProperties().getProperty("key"));
+        assertEquals(null, propertyLoader.getProperty("key"));
     }
 }

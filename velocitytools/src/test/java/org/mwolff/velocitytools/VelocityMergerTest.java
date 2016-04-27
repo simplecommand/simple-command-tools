@@ -6,6 +6,7 @@ import java.util.Properties;
 import org.apache.log4j.Logger;
 import org.apache.velocity.VelocityContext;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.mwolff.velocitytools.PropertyLoader.Methods;
 
@@ -25,6 +26,7 @@ public class VelocityMergerTest {
     }
 
     @Test
+    @Ignore
     public void mergeSimpleKey() throws Exception {
         LOG.debug("mergeSimpleKey");
         final VelocityMerger velocityMerger = new VelocityMerger();

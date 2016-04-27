@@ -42,4 +42,23 @@ public class PropertyLoader {
             this.properties.load(is);
     }
 
+    public String getProperty(String property) {
+        String prop = getProperties().getProperty(property);
+        String[] split = prop.split(" ");
+        for (String string : split) {
+            if (string.startsWith("$")) {
+                String replaceString = getProperties().getProperty(string.substring(1, string.length()));
+            }
+            
+        }
+        StringBuilder builder = new StringBuilder();
+        for (String string : split) {
+            builder.append(string);
+            builder.append(" ");
+        }
+        
+        return builder.toString().trim();
+    }
+    
+
 }

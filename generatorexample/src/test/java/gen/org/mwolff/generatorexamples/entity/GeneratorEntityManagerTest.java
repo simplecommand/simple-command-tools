@@ -31,12 +31,13 @@ public class GeneratorEntityManagerTest {
               tx.begin();                                                               
               em.merge(adress);                                                         
               tx.commit();                                                              
-            }                                                                           
+            }   
+            
 
             return String.format("Adress{id=%s, city=%s}\n", adress.getId(), adress.getCity());
         };
         
-        System.out.println(generatorEntityManager.accept(code));
+        //System.out.println(generatorEntityManager.accept(code));
         
     }
 
