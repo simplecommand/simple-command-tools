@@ -6,7 +6,6 @@ import java.util.Properties;
 import org.apache.log4j.Logger;
 import org.apache.velocity.VelocityContext;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.mwolff.velocitytools.PropertyLoader.Methods;
 
@@ -26,7 +25,6 @@ public class VelocityMergerTest {
     }
 
     @Test
-    @Ignore
     public void mergeSimpleKey() throws Exception {
         LOG.debug("mergeSimpleKey");
         final VelocityMerger velocityMerger = new VelocityMerger();
@@ -36,7 +34,7 @@ public class VelocityMergerTest {
         final Properties properties = propLoader.getProperties();
         velocityMerger.setProperties(properties);
         final String result = velocityMerger.mergeWithPropertyFile();
-        Assert.assertEquals("Hallo meine Welt merged.", result);
+        Assert.assertEquals("Hallo meine Welt ${key} merged.", result);
     }
     
     @Test

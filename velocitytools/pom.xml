@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>mwolff.org</groupId>
 	<artifactId>velocitytools</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2</version>
 	<name>Velocity Tools</name>
 	<description>Tools to use velocity</description>
 

@@ -2,7 +2,10 @@ package org.mwolff.velocitytools;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Collection;
 import java.util.Properties;
+import java.util.Set;
+import java.util.regex.Pattern;
 
 /**
  * Loads a property file from the various sources.
@@ -35,7 +38,6 @@ public class PropertyLoader {
         } else {
             throw new IOException("Property file does not exists");
         }
-            
     }
 
     private void loadProperties(final InputStream is) throws IOException{
@@ -43,21 +45,17 @@ public class PropertyLoader {
     }
 
     public String getProperty(String property) {
-        String prop = getProperties().getProperty(property);
-        String[] split = prop.split(" ");
-        for (String string : split) {
-            if (string.startsWith("$")) {
-                String replaceString = getProperties().getProperty(string.substring(1, string.length()));
+
+        String toExermine = getProperties().getProperty(property);
+        Set<Object> keySet = getProperties().keySet();
+        for (Object object : keySet) {
+            String key = (String) object;
+            if (toExermine.contains("${" + key + "}")) {
+                String value = getProperties().getProperty(key);
+                toExermine = toExermine.replaceAll(Pattern.quote("${" + key + "}"), value);
             }
-            
         }
-        StringBuilder builder = new StringBuilder();
-        for (String string : split) {
-            builder.append(string);
-            builder.append(" ");
-        }
-        
-        return builder.toString().trim();
+        return toExermine;
     }
     
 
