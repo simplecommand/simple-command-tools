@@ -1,6 +1,8 @@
 package gen.org.mwolff.generatorexamples.entity;
 
 import java.util.function.BiFunction;
+import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -18,9 +20,7 @@ public class GeneratorEntityManagerTest {
     public void testEntitySupplier() throws Exception {
         
         GeneratorEntityManager generatorEntityManager = new GeneratorEntityManager();
-        
         BiFunction<EntityManager, EntityTransaction, String> code = (em, tx) -> {
-            
             Adress adress = em.find(Adress.class, 1);
             
             if (adress == null) {                                                         
@@ -32,12 +32,9 @@ public class GeneratorEntityManagerTest {
               em.merge(adress);                                                         
               tx.commit();                                                              
             }   
-            
-
-            return String.format("Adress{id=%s, city=%s}\n", adress.getId(), adress.getCity());
+            return String.format("Adress{id=%s, city=%s}", adress.getId(), adress.getCity());
         };
-        
-        //System.out.println(generatorEntityManager.accept(code));
+        assertThat("Adress{id=1, city=Bremen}", is(generatorEntityManager.accept(code)));
         
     }
 

@@ -43,7 +43,6 @@ public class EntityTest {
     @Test
     public void test() throws Exception {
 
-        thrown.expect(PersistenceException.class);
         
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("test");
         EntityManager em = emf.createEntityManager();
