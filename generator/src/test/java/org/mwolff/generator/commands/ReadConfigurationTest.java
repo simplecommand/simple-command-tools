@@ -75,6 +75,7 @@ public class ReadConfigurationTest {
         assertThat(configuration.getXmlfile(), is("/class.xml"));
         assertThat(configuration.getIdDefault(), is("true"));
         assertThat(configuration.getHibernateSupport(), is("true"));
+        assertThat(configuration.getIdType(), is("int"));
     }
 
     @Test

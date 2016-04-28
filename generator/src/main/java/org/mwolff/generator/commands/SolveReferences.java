@@ -85,7 +85,7 @@ public class SolveReferences<T extends Configuration> extends AbstractDefaultCha
                 variable.setCardinality("none");
                 variable.setIdentifier("id");
                 variable.setModifier("private");
-                variable.setType("int");
+                variable.setType(context.getIdType());
                 classStructure.addInstanceVariables(variable);
             }
         }
