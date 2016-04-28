@@ -126,16 +126,7 @@
 
 		<!-- Persistence -->
 
-        <!--  
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.16</version>
-			<scope>provided</scope>
-		</dependency>
-        --> 
-
-		<dependency>
+ 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>3.4.0.GA</version>
@@ -159,7 +150,7 @@
 		<dependency>
 			<groupId>mwolff.org</groupId>
 			<artifactId>velocitytools</artifactId>
-			<version>0.0.1</version>
+			<version>0.0.2</version>
 		</dependency>
 
 		<dependency>

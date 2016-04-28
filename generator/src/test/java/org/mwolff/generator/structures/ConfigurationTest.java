@@ -65,6 +65,7 @@ public class ConfigurationTest {
         configuration.setActualOutputPath("/home/mwolff/actual");
         configuration.setIdDefault("true");
         configuration.setHibernateSupport("true");
+        configuration.setIdType("int");
         ClassStructure structure = new ClassStructure();
         configuration.setActualStructure(structure);
         List<ClassStructure> configList = new ArrayList<ClassStructure>();
@@ -81,6 +82,7 @@ public class ConfigurationTest {
         assertThat(configuration.getActualOutputPath(), is("/home/mwolff/actual"));
         assertThat(configuration.getIdDefault(), is("true"));
         assertThat(configuration.getHibernateSupport(), is("true"));
+        assertThat(configuration.getIdType(), is("int"));
         assertThat(structure, is(configuration.getActualStructure()));
     }
 

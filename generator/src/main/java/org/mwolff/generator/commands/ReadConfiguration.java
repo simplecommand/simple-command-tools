@@ -51,18 +51,24 @@ public class ReadConfiguration<T extends Configuration> extends AbstractDefaultC
         }
         
         LOG.info("Setting configuration information into context");
-        context.setOutputPath(loader.getProperties().getProperty("outputpath"));
+        context.setOutputPath(loader.getProperty("outputpath"));
         LOG.info("outputpath: " + context.getOutputPath());
-        context.setClassTemplate(loader.getProperties().getProperty("classtemplate"));
+        context.setClassTemplate(loader.getProperty("classtemplate"));
         LOG.info("classtemplate: " + context.getClassTemplate());
-        context.setBasepath(loader.getProperties().getProperty("basepath"));
+        context.setBasepath(loader.getProperty("basepath"));
         LOG.info("basepath: " + context.getBasepath());
-        context.setXmlfile(loader.getProperties().getProperty("xmlfile"));
+        context.setXmlfile(loader.getProperty("xmlfile"));
         LOG.info("xmlfile: " + context.getXmlfile());
-        context.setIdDefault(loader.getProperties().getProperty("iddefault"));
+        context.setIdDefault(loader.getProperty("iddefault"));
         LOG.info("iddefault: " + context.getIdDefault());
-        context.setHibernateSupport(loader.getProperties().getProperty("hibernatesupport"));
+        context.setHibernateSupport(loader.getProperty("hibernatesupport"));
         LOG.info("hibernatesupport: " + context.getHibernateSupport());
+        String idtype = loader.getProperty("idtype");
+        if (idtype == null | "".equals(idtype)) {
+            idtype = "int";
+        }
+        context.setIdType(idtype);
+        LOG.info("id type: " + context.getIdType());
         
     }
 }
