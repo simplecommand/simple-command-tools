@@ -22,8 +22,6 @@ public class PropertyLoader {
         CLASSPATH, FILE, DEFAULT
     }
 
-    private File file;
-
     private final Properties properties = new Properties();
 
     public void initialize(final String resource, final Methods method) throws IOException {
@@ -35,11 +33,7 @@ public class PropertyLoader {
     }
 
     public void loadPerFile(final String resource) throws FileNotFoundException, IOException {
-        // indirection to file because of testing
-        if (file == null) {
-            file = new File(resource);
-        }
-        FileInputStream fileInputStream = new FileInputStream(file);
+        FileInputStream fileInputStream = new FileInputStream(resource);
         this.properties.load(fileInputStream);
     }
 

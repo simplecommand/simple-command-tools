@@ -49,13 +49,9 @@ public class PropertyLoaderTest {
     }
     
     @Test
-    public void propertyLoaderFromFile() throws Exception {
-        URL url = this.getClass().getResource("/example.properties");
-        File testWsdl = new File(url.getFile());
-        ReflectionTestUtils.setField(propertyLoader, "file", testWsdl);
-        propertyLoader.initialize("", Methods.FILE);
+    public void propertyLoaderFromFileMaven() throws Exception {
+        propertyLoader.initialize("src/test/resources/example.properties", Methods.FILE);
         assertEquals("value", propertyLoader.getProperty("key"));
         assertEquals("meine Welt value", propertyLoader.getProperty("Welt"));
-        
     }
 }
