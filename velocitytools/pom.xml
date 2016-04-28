@@ -2,10 +2,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>mwolff.org</groupId>
-	<artifactId>velocitytools</artifactId>
-	<version>0.0.2</version>
-	<name>Velocity Tools</name>
-	<description>Tools to use velocity</description>
+	<artifactId>toolbox</artifactId>
+	<version>1.0.0</version>
+	<name>Toolbox</name>
+	<description>Tools for some purpose mainly velocity</description>
 
 	<properties>
 		<springframework.version>4.2.0.RELEASE</springframework.version>
