@@ -3,7 +3,6 @@ package org.mwolff.velocitytools;
 import java.io.StringWriter;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
@@ -22,7 +21,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class VelocityMerger {
     
-    private static final Logger LOG = Logger.getLogger(VelocityMerger.class);
 
     private String template;
     private Properties properties;
@@ -35,7 +33,7 @@ public class VelocityMerger {
         this.properties = properties;
     }
 
-    public String mergeWithPropertyFile() {
+    public String mergeWithPropertyFile() throws Exception {
         final VelocityEngine velocityEngine = initializeVelocityEngine();
         final VelocityContext context = new VelocityContext();
         movePropertiesToContext(context);
@@ -50,15 +48,11 @@ public class VelocityMerger {
         return ve;
     }
 
-    private StringWriter mergeTemplateWithContext(final VelocityEngine velocityEngine, final VelocityContext context) {
+    private StringWriter mergeTemplateWithContext(final VelocityEngine velocityEngine, final VelocityContext context) throws Exception {
         Template veloTemplate;
         veloTemplate = velocityEngine.getTemplate(this.template);
         final StringWriter writer = new StringWriter();
-        try {
         veloTemplate.merge(context, writer);
-        } catch (Throwable ex) {
-            LOG.error(ex);
-        }
         return writer;
     }
 
@@ -76,7 +70,7 @@ public class VelocityMerger {
         Velocity.evaluate(context, w, "mystring", s);
     }
 
-    public String mergeWithContext(VelocityContext context) {
+    public String mergeWithContext(VelocityContext context) throws Exception {
         final VelocityEngine velocityEngine = initializeVelocityEngine();
         final StringWriter writer = mergeTemplateWithContext(velocityEngine, context);
         return writer.toString();

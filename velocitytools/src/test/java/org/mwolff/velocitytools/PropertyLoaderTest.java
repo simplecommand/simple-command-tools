@@ -2,16 +2,12 @@ package org.mwolff.velocitytools;
 
 import static org.junit.Assert.*;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.mwolff.velocitytools.PropertyLoader.Methods;
-import org.springframework.test.util.ReflectionTestUtils;
 
 public class PropertyLoaderTest {
 

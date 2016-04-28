@@ -84,4 +84,11 @@ public class ReadConfigurationTest {
         configuration.setConfiguration("/error.properties");
         readConfiguration.execute(configuration);
     }
+    
+    @Test
+    public void readConfigurationWhereIdTypeIsntSet() throws Exception {
+        configuration.setConfiguration("/configuration.test.empty.properties");
+        readConfiguration.execute(configuration);
+        assertThat(configuration.getIdType(), is("int"));
+    }
 }

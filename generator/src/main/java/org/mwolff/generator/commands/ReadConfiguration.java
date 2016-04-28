@@ -64,7 +64,7 @@ public class ReadConfiguration<T extends Configuration> extends AbstractDefaultC
         context.setHibernateSupport(loader.getProperty("hibernatesupport"));
         LOG.info("hibernatesupport: " + context.getHibernateSupport());
         String idtype = loader.getProperty("idtype");
-        if (idtype == null | "".equals(idtype)) {
+        if ("".equals(idtype)) {
             idtype = "int";
         }
         context.setIdType(idtype);

@@ -69,7 +69,12 @@ public class MergeTemplate<T extends Configuration> extends AbstractDefaultChain
             VelocityContext veloContext = new VelocityContext();
             veloContext.put("classStructure", classStructure);
             veloContext.put("display",new DisplayTool());
-            final String result = velocityMerger.mergeWithContext(veloContext);
+            String result = null;
+            try {
+                result = velocityMerger.mergeWithContext(veloContext);
+            } catch (Exception e) {
+                throw new CommandException(e);
+            }
             context.setMergeString(result);
             LOG.info("Result of merging is: \n" + result);
             fileWriter.execute(context);
