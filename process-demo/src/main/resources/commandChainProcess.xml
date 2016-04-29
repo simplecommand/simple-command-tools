@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<commandchain xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="simplecommandframework.xsd">
+	<command class="de.neusta.processdemo.commands.StartCommand" processid="Start">
+       <transition returnvalue="OK" target="CustomerExists"/>
+	</command>
+    <command class="de.neusta.processdemo.commands.CustomerExistsCommand" processid="CustomerExists">
+       <transition returnvalue="Ja" target="SendNewsletter"/>
+       <transition returnvalue="Nein" target="AddCustomer"/>
+    </command>
+    <command class="de.neusta.processdemo.commands.SendNewsletterCommand" processid="SendNewsletter">
+       <transition returnvalue="OK" target="END"/>
+    </command>
+    <command class="de.neusta.processdemo.commands.AddCustomerCommand" processid="AddCustomer">
+       <transition returnvalue="OK" target="END"/>
+    </command>
+    <command class="de.mwolff.commons.command.DefaultEndCommand" processid="END"/>
+</commandchain>
