@@ -8,16 +8,11 @@ public class AddCustomerCommand <T extends ProcessParameter> extends AbstractDef
 
     @Override
     public void execute(T context) throws CommandException {
-        context.setCustomerHasToBeAdded(true);
     }
     
     @Override
     public String executeAsProcess(String startCommand, T context) {
-        
-        try {
-            execute(context);
-        } catch (CommandException e) {
-        }
+        context.setCustomerHasToBeAdded(true);
         return "OK";
     }
 

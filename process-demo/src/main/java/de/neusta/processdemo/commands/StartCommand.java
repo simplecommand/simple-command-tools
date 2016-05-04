@@ -7,16 +7,14 @@ import de.neusta.processdemo.parameterobject.ProcessParameter;
 public class StartCommand<T extends ProcessParameter> extends AbstractDefaultProcessCommand<T>{
 
     @Override
-    public void execute(T context) throws CommandException {
-        context.setStarted(true);
-    }
-    
-    @Override
     public String executeAsProcess(String startCommand, T context) {
-        try {
-            this.execute(context);
-        } catch (CommandException e) {
-        }
+        context.setStarted(true);
         return "OK";
+    }
+
+    @Override
+    public void execute(T context) throws CommandException {
+        // TODO Auto-generated method stub
+        
     }
 }

@@ -8,16 +8,11 @@ public class SendNewsletterCommand <T extends ProcessParameter> extends Abstract
 
     @Override
     public void execute(T context) throws CommandException {
-        context.setNewsletterHasToBeSent(true);
     }
     
     @Override
     public String executeAsProcess(String startCommand, T context) {
-        
-        try {
-            execute(context);
-        } catch (CommandException e) {
-        }
+        context.setNewsletterHasToBeSent(true);
         return "OK";
     }
 

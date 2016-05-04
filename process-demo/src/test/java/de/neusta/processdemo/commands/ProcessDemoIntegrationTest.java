@@ -12,10 +12,9 @@ public class ProcessDemoIntegrationTest {
 
     @Test
     public void processWithNewsletter() throws Exception {
-        final XMLChainBuilder<ProcessParameter> xmlChainBuilder = new XMLChainBuilder<>();
+        final XMLChainBuilder<ProcessParameter> xmlChainBuilder = new XMLChainBuilder<>("/commandChainProcess.xml");
         final ProcessParameter context = new ProcessParameter();
         context.setCustomerExists(true);
-        xmlChainBuilder.setXmlFileName("/commandChainProcess.xml");
         String returnvalue = xmlChainBuilder.executeAsProcess("Start", context);
         assertThat(returnvalue, is("END"));
         assertThat(context.isCustomerHasToBeAdded(), is(false));
@@ -24,10 +23,9 @@ public class ProcessDemoIntegrationTest {
 
     @Test
     public void processAddCustomer() throws Exception {
-        final XMLChainBuilder<ProcessParameter> xmlChainBuilder = new XMLChainBuilder<>();
+        final XMLChainBuilder<ProcessParameter> xmlChainBuilder = new XMLChainBuilder<>("/commandChainProcess.xml");
         final ProcessParameter context = new ProcessParameter();
         context.setCustomerExists(false);
-        xmlChainBuilder.setXmlFileName("/commandChainProcess.xml");
         String returnvalue = xmlChainBuilder.executeAsProcess("Start", context);
         assertThat(returnvalue, is("END"));
         assertThat(context.isCustomerHasToBeAdded(), is(true));
