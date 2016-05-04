@@ -31,7 +31,8 @@ public class TestAppenderTest {
         final LoggingEvent firstLogEntry = log.get(0);
         assertThat(firstLogEntry.getLevel(), is(Level.INFO));
         assertThat((String) firstLogEntry.getMessage(), is("Message To Catch"));
-
+        assertThat(false, is(appender.requiresLayout()));
+        
         logger.removeAppender(appender);
     }
 

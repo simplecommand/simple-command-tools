@@ -20,7 +20,6 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class VelocityMerger {
-    
 
     private String template;
     private Properties properties;
@@ -33,11 +32,11 @@ public class VelocityMerger {
         this.properties = properties;
     }
 
-    public String mergeWithPropertyFile() throws Exception {
+    public String mergeWithPropertyFile() throws VelocityException {
         final VelocityEngine velocityEngine = initializeVelocityEngine();
         final VelocityContext context = new VelocityContext();
         movePropertiesToContext(context);
-        final StringWriter writer = mergeTemplateWithContext(velocityEngine, context);
+        StringWriter writer = mergeTemplateWithContext(velocityEngine, context);
         return writer.toString();
     }
 
@@ -48,7 +47,8 @@ public class VelocityMerger {
         return ve;
     }
 
-    private StringWriter mergeTemplateWithContext(final VelocityEngine velocityEngine, final VelocityContext context) throws Exception {
+    private StringWriter mergeTemplateWithContext(final VelocityEngine velocityEngine, final VelocityContext context)
+            throws VelocityException {
         Template veloTemplate;
         veloTemplate = velocityEngine.getTemplate(this.template);
         final StringWriter writer = new StringWriter();
@@ -64,13 +64,13 @@ public class VelocityMerger {
     }
 
     /**
-     * Only for test purposes to test all the fragments. 
+     * Only for test purposes to test all the fragments.
      */
     public static void evaluate(VelocityContext context, StringWriter w, String s) {
         Velocity.evaluate(context, w, "mystring", s);
     }
 
-    public String mergeWithContext(VelocityContext context) throws Exception {
+    public String mergeWithContext(VelocityContext context) throws VelocityException {
         final VelocityEngine velocityEngine = initializeVelocityEngine();
         final StringWriter writer = mergeTemplateWithContext(velocityEngine, context);
         return writer.toString();

@@ -1,7 +1,6 @@
 package org.mwolff.velocitytools;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -31,7 +30,7 @@ public class PropertyLoader {
         }
     }
 
-    public void loadPerFile(final String resource) throws FileNotFoundException, IOException {
+    public void loadPerFile(final String resource) throws IOException {
         FileInputStream fileInputStream = new FileInputStream(resource);
         this.properties.load(fileInputStream);
     }

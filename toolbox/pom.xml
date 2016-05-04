@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>mwolff.org</groupId>
 	<artifactId>toolbox</artifactId>
-	<version>1.0.0</version>
+	<version>1.1.0</version>
 	<name>Toolbox</name>
 	<description>Tools for some purpose mainly velocity</description>
 
@@ -41,6 +41,19 @@
 			<type>jar</type>
 		</dependency>
 
+		<dependency>
+			<groupId>jaxen</groupId>
+			<artifactId>jaxen</artifactId>
+			<version>1.1.6</version>
+		</dependency>
+
+
+		<!-- DOM4J -->
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>1.6.1</version>
+		</dependency>
 
 		<!-- Testing -->
 
@@ -77,7 +90,7 @@
 			</exclusions>
 		</dependency>
 
-        <!-- Spring -->
+		<!-- Spring -->
 
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -103,20 +116,20 @@
 			<artifactId>javax.inject</artifactId>
 			<version>1</version>
 		</dependency>
-		
+
 		<!-- Velocity -->
 
-        <dependency>
-            <groupId>org.apache.velocity</groupId>
-            <artifactId>velocity</artifactId>
-            <version>1.7</version>
-        </dependency>
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity</artifactId>
+			<version>1.7</version>
+		</dependency>
 
-        <dependency>
-            <groupId>org.apache.velocity</groupId>
-            <artifactId>velocity-tools</artifactId>
-            <version>2.0</version>
-        </dependency>
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity-tools</artifactId>
+			<version>2.0</version>
+		</dependency>
 
 	</dependencies>
 	<build>
