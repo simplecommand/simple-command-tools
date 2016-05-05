@@ -44,7 +44,7 @@ public class ReadConfiguration<T extends Configuration> extends AbstractDefaultC
         LOG.info("Reading property file out of classpath: " + context.getConfiguration());
         PropertyLoader loader = new PropertyLoader();
         try {
-            loader.initialize(context.getConfiguration(), Methods.CLASSPATH);
+            loader.initialize(context.getConfiguration(), Methods.FILE);
         } catch (Exception ex) {
             LOG.error("Error reading configuration file " + context.getConfiguration(), ex);
             throw new CommandException(ex);
@@ -54,6 +54,8 @@ public class ReadConfiguration<T extends Configuration> extends AbstractDefaultC
         context.setOutputPath(loader.getProperty("outputpath"));
         LOG.info("outputpath: " + context.getOutputPath());
         context.setClassTemplate(loader.getProperty("classtemplate"));
+        LOG.info("classtemplate: " + context.getClassTemplate());
+        context.setPathToTemplate(loader.getProperty("pathtotemplates"));
         LOG.info("classtemplate: " + context.getClassTemplate());
         context.setBasepath(loader.getProperty("basepath"));
         LOG.info("basepath: " + context.getBasepath());

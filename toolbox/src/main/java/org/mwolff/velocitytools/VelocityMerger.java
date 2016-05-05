@@ -32,18 +32,19 @@ public class VelocityMerger {
         this.properties = properties;
     }
 
-    public String mergeWithPropertyFile() throws VelocityException {
-        final VelocityEngine velocityEngine = initializeVelocityEngine();
+    public String mergeWithPropertyFile(final String pathToTemplate) throws VelocityException {
+        final VelocityEngine velocityEngine = initializeVelocityEngine(pathToTemplate);
         final VelocityContext context = new VelocityContext();
         movePropertiesToContext(context);
         StringWriter writer = mergeTemplateWithContext(velocityEngine, context);
         return writer.toString();
     }
 
-    private VelocityEngine initializeVelocityEngine() {
+    private VelocityEngine initializeVelocityEngine(final String pathToTemplate) {
         final VelocityEngine ve = new VelocityEngine();
-        ve.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath");
-        ve.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
+        ve.setProperty(RuntimeConstants.FILE_RESOURCE_LOADER_PATH, pathToTemplate);
+        //ve.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath");
+        //ve.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
         return ve;
     }
 
@@ -70,8 +71,8 @@ public class VelocityMerger {
         Velocity.evaluate(context, w, "mystring", s);
     }
 
-    public String mergeWithContext(VelocityContext context) throws VelocityException {
-        final VelocityEngine velocityEngine = initializeVelocityEngine();
+    public String mergeWithContext(final VelocityContext context, final String pathToTemplate) throws VelocityException {
+        final VelocityEngine velocityEngine = initializeVelocityEngine(pathToTemplate);
         final StringWriter writer = mergeTemplateWithContext(velocityEngine, context);
         return writer.toString();
     }

@@ -39,9 +39,6 @@ import org.mwolff.generator.commands.PrepareJava;
 import org.mwolff.generator.commands.ReadClassStructure;
 import org.mwolff.generator.commands.ReadConfiguration;
 import org.mwolff.generator.commands.SolveReferences;
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Scope;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 

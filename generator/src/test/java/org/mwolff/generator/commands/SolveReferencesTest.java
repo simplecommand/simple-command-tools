@@ -59,7 +59,7 @@ public class SolveReferencesTest {
 
     @Test
     public void packageReferences() throws Exception {
-        configuration.setConfiguration("/configuration.test.properties");
+        configuration.setConfiguration("src/test/resources/configuration.test.properties");
         readConfiguration.execute(configuration);
         readClassStructure.execute(configuration);
         solveReferences.execute(configuration);
@@ -71,7 +71,7 @@ public class SolveReferencesTest {
     
     @Test
     public void nopackageReferences() throws Exception {
-        configuration.setConfiguration("/configuration.test.properties");
+        configuration.setConfiguration("src/test/resources//configuration.test.properties");
         readConfiguration.execute(configuration);
         readClassStructure.execute(configuration);
         solveReferences.execute(configuration);
@@ -84,7 +84,7 @@ public class SolveReferencesTest {
 
     @Test
     public void defaultId() throws Exception {
-        configuration.setConfiguration("/configuration.test.properties");
+        configuration.setConfiguration("src/test/resources//configuration.test.properties");
         readConfiguration.execute(configuration);
         readClassStructure.execute(configuration);
         solveReferences.execute(configuration);
@@ -103,7 +103,7 @@ public class SolveReferencesTest {
     
     @Test
     public void oneToManyImports() throws Exception {
-        configuration.setConfiguration("/configuration.test.properties");
+        configuration.setConfiguration("src/test/resources//configuration.test.properties");
         readConfiguration.execute(configuration);
         readClassStructure.execute(configuration);
         solveReferences.execute(configuration);

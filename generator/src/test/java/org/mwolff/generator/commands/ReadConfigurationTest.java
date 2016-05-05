@@ -66,13 +66,14 @@ public class ReadConfigurationTest {
 
     @Test
     public void readConfiguration() throws Exception {
-        configuration.setConfiguration("/configuration.test.properties");
+        configuration.setConfiguration("src/test/resources/configuration.test.properties");
         readConfiguration.execute(configuration);
         assertThat(configuration.getOutputPath(),
                 is("/home/mwolff/windows_shared/mwolffgithub/mwolffgithub/generator/"));
         assertThat(configuration.getClassTemplate(), is("class-template.vm"));
+        assertThat(configuration.getPathToTemplate(), is("src/test/resources"));
         assertThat(configuration.getBasepath(), is("/home/mwolff/windows_shared/mwolffgithub/mwolffgithub/generator"));
-        assertThat(configuration.getXmlfile(), is("/class.xml"));
+        assertThat(configuration.getXmlfile(), is("src/test/resources/class.xml"));
         assertThat(configuration.getIdDefault(), is("true"));
         assertThat(configuration.getHibernateSupport(), is("true"));
         assertThat(configuration.getIdType(), is("int"));
@@ -87,7 +88,7 @@ public class ReadConfigurationTest {
     
     @Test
     public void readConfigurationWhereIdTypeIsntSet() throws Exception {
-        configuration.setConfiguration("/configuration.test.empty.properties");
+        configuration.setConfiguration("src/test/resources/configuration.test.empty.properties");
         readConfiguration.execute(configuration);
         assertThat(configuration.getIdType(), is("int"));
     }

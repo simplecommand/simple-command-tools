@@ -27,6 +27,7 @@ package org.mwolff.plugin;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugins.annotations.Mojo;
+import org.apache.maven.plugins.annotations.Parameter;
 
 import runner.SpringRunner;
 
@@ -39,12 +40,25 @@ import runner.SpringRunner;
 @Mojo( name = "generate")
 public class GeneratorMojo extends AbstractMojo
 {
+
+    /**
+     * The greeting to display.
+     */
+    @Parameter( property = "generate.configure", defaultValue = "invalid" )
+    private String configure;
+    
+    public String getConfigure() {
+        return configure;
+    }
+
     public void execute() throws MojoExecutionException
     {
         getLog().info( "----------------------------------------------" );
         getLog().info( "----------------Generating stuff--------------" );
         getLog().info( "----------------------------------------------" );
-        String[] arguments = new String[]{""};
+        getLog().info("Configuration: " + getConfigure());
+        String[] arguments = new String[]{getConfigure()};
         SpringRunner.main(arguments);
     }
+
 }

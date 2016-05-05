@@ -45,11 +45,13 @@ public class SpringRunner {
     @SuppressWarnings("unchecked")
     public static void main(String[] args) {
 
+        String configure = args[0];
+        
         ctx = new ClassPathXmlApplicationContext("/application.xml");
         injectionChainBuilder = (InjectionChainBuilder<Configuration>) ctx.getBean("injectionChainBuilder");
         configuration = (Configuration) ctx.getBean("configuration");
 
-        configuration.setConfiguration("/generator.properties");
+        configuration.setConfiguration(configure + "/generator.properties");
 
         try {
             injectionChainBuilder.execute(configuration);

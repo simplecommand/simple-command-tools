@@ -26,8 +26,8 @@
  */
 package org.mwolff.generator.commands;
 
-import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.*;
 
 import javax.annotation.Resource;
 

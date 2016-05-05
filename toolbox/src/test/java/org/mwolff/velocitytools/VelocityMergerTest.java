@@ -33,7 +33,7 @@ public class VelocityMergerTest {
         propLoader.initialize("/example.properties", Methods.CLASSPATH);
         final Properties properties = propLoader.getProperties();
         velocityMerger.setProperties(properties);
-        final String result = velocityMerger.mergeWithPropertyFile();
+        final String result = velocityMerger.mergeWithPropertyFile("src/test/resources");
         Assert.assertEquals("Hallo meine Welt ${key} merged.", result);
     }
     
@@ -46,7 +46,7 @@ public class VelocityMergerTest {
         propLoader.initialize("/specification.properties", Methods.CLASSPATH);
         final Properties properties = propLoader.getProperties();
         velocityMerger.setProperties(properties);
-        final String result = velocityMerger.mergeWithPropertyFile();
+        final String result = velocityMerger.mergeWithPropertyFile("src/test/resources");
       
         final String lineSeparator = System.getProperty("line.separator");
 
@@ -75,7 +75,7 @@ public class VelocityMergerTest {
         context.put("author", "Manfred Wolff");
         context.put("version",  "1.0.0");
         context.put("classname", "TestClass");
-        final String result = velocityMerger.mergeWithContext(context);
+        final String result = velocityMerger.mergeWithContext(context, "src/test/resources");
         
         final String lineSeparator = System.getProperty("line.separator");
         

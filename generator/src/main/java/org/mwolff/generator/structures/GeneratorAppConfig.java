@@ -29,10 +29,10 @@ package org.mwolff.generator.structures;
 
 import org.mwolff.generator.commands.FileWriter;
 import org.mwolff.generator.commands.MergeTemplate;
+import org.mwolff.generator.commands.PrepareJava;
 import org.mwolff.generator.commands.ReadClassStructure;
 import org.mwolff.generator.commands.ReadConfiguration;
 import org.mwolff.generator.commands.SolveReferences;
-import org.mwolff.generator.commands.PrepareJava;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

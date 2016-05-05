@@ -69,7 +69,7 @@ public class ReadClassStructureTest {
     
     @Test
     public void classStructureExists() throws Exception {
-        configuration.setXmlfile("/class.xml");
+        configuration.setXmlfile("src/test/resources/class.xml");
         readClassStructure.execute(configuration);
         ClassStructure structure = configuration.getConfigurationList().get(0);
         assertThat(structure, notNullValue());

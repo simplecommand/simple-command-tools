@@ -26,6 +26,8 @@
  */
 package org.mwolff.generator.xml;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -51,7 +53,7 @@ public class XMLHelper {
         this.xmlFileName = xmlFileName;
     }
     
-    public List<ClassStructure>  readXMLFile() throws XMLException {
+    public List<ClassStructure>  readXMLFile() throws XMLException, FileNotFoundException {
         final String resource = xmlFileName;
         final SAXReader reader = new SAXReader();
         final Document document = createXMLStream(reader, resource);
@@ -175,15 +177,12 @@ public class XMLHelper {
         classStructure.setInstanceVariableList(variableList);
     }
 
-    private Document createXMLStream(SAXReader reader, String resource) throws XMLException {
-        Document document;
-        final InputStream xmlStream = this.getClass().getResourceAsStream(resource);
-        if (xmlStream != null) {
-            document = createXMLDocument(reader, xmlStream);
-        } else {
-            LOG.error("Could not read xml file");
-            throw new XMLException("Could not read xml file");
-        }
+    private Document createXMLStream(SAXReader reader, String resource) throws XMLException, FileNotFoundException {
+        Document document = null;
+        FileInputStream fileInputStream = new FileInputStream(resource);
+        if (fileInputStream != null) {
+            document = createXMLDocument(reader, fileInputStream);
+        } 
         return document;
     }
     

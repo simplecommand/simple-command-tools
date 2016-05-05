@@ -71,7 +71,7 @@ public class MergeTemplate<T extends Configuration> extends AbstractDefaultChain
             veloContext.put("display",new DisplayTool());
             String result = null;
             try {
-                result = velocityMerger.mergeWithContext(veloContext);
+                result = velocityMerger.mergeWithContext(veloContext, context.getPathToTemplate());
             } catch (Exception e) {
                 throw new CommandException(e);
             }

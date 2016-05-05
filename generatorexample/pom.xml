@@ -28,7 +28,7 @@
 		<dependency>
 			<groupId>org.javassist</groupId>
 			<artifactId>javassist</artifactId>
-            <version>3.18.2-GA</version>
+			<version>3.18.2-GA</version>
 		</dependency>
 
 		<dependency>
@@ -106,7 +106,7 @@
 		<dependency>
 			<groupId>mwolff.org</groupId>
 			<artifactId>generator</artifactId>
-			<version>0.0.2</version>
+			<version>0.0.3</version>
 		</dependency>
 
 
@@ -131,6 +131,9 @@
 				<groupId>org.mwolff</groupId>
 				<artifactId>generator-maven-plugin</artifactId>
 				<version>1.0.0</version>
+				<configuration>
+					<configure>/home/mwolff/git/SimpleCommandFramework-Examples/generatorexample/src/main/resources/</configure>
+				</configuration>
 				<executions>
 					<execution>
 						<phase>generate-sources</phase>

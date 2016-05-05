@@ -26,7 +26,7 @@
  */
 package org.mwolff.generator.structures;
 
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
@@ -66,6 +66,7 @@ public class ConfigurationTest {
         configuration.setIdDefault("true");
         configuration.setHibernateSupport("true");
         configuration.setIdType("int");
+        configuration.setPathToTemplate("src/test/resources");
         ClassStructure structure = new ClassStructure();
         configuration.setActualStructure(structure);
         List<ClassStructure> configList = new ArrayList<ClassStructure>();
@@ -83,6 +84,7 @@ public class ConfigurationTest {
         assertThat(configuration.getIdDefault(), is("true"));
         assertThat(configuration.getHibernateSupport(), is("true"));
         assertThat(configuration.getIdType(), is("int"));
+        assertThat(configuration.getPathToTemplate(), is("src/test/resources"));
         assertThat(structure, is(configuration.getActualStructure()));
     }
 

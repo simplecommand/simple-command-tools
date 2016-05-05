@@ -26,8 +26,8 @@
  */
 package org.mwolff.generator.structures;
 
-import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 

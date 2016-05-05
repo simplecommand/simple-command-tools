@@ -30,7 +30,7 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 import java.io.File;
-import java.io.InputStream;
+import java.io.FileInputStream;
 
 import javax.annotation.Resource;
 
@@ -67,16 +67,16 @@ public class MergeTemplateTest {
 
     @Test
     public void templateExists() throws Exception {
-        final InputStream is = this.getClass().getResourceAsStream("/class-template.vm");
-        assertThat(is, notNullValue());
+        FileInputStream fileInputStream = new FileInputStream("src/test/resources/class-template.vm");
+        assertThat(fileInputStream, notNullValue());
     }
 
     @Test
     public void mergeTemplateWithConfiguration() throws Exception {
         
-        configuration.setConfiguration("/configuration.test.properties");
+        configuration.setConfiguration("src/test/resources/configuration.test.properties");
         readConfiguration.execute(configuration);
-        configuration.setXmlfile("/class.xml");
+        configuration.setXmlfile("src/test/resources/class.xml");
         readClassStructure.execute(configuration);
         solveReferences.execute(configuration);
         mergeTemplate.execute(configuration);
