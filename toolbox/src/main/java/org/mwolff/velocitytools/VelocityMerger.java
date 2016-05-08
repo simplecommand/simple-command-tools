@@ -32,21 +32,29 @@ public class VelocityMerger {
         this.properties = properties;
     }
 
-    public String mergeWithPropertyFile(final String pathToTemplate) throws VelocityException {
-        final VelocityEngine velocityEngine = initializeVelocityEngine(pathToTemplate);
+    public String mergeWithPropertyFileWithFilePath(final String pathToTemplate) throws VelocityException {
+        final VelocityEngine velocityEngine = initializeVelocityEngineWithFilePath(pathToTemplate);
+        final VelocityContext context = new VelocityContext();
+        movePropertiesToContext(context);
+        StringWriter writer = mergeTemplateWithContext(velocityEngine, context);
+        return writer.toString();
+    }
+    
+    public String mergeWithPropertyWithClassPath() throws VelocityException {
+        final VelocityEngine velocityEngine = initializeVelocityEngineWithClassPath();
         final VelocityContext context = new VelocityContext();
         movePropertiesToContext(context);
         StringWriter writer = mergeTemplateWithContext(velocityEngine, context);
         return writer.toString();
     }
 
-    private VelocityEngine initializeVelocityEngine(final String pathToTemplate) {
+    private VelocityEngine initializeVelocityEngineWithFilePath(final String pathToTemplate) {
         final VelocityEngine ve = new VelocityEngine();
         ve.setProperty(RuntimeConstants.FILE_RESOURCE_LOADER_PATH, pathToTemplate);
         return ve;
     }
     
-    private VelocityEngine initializeVelocityEngine() {
+    private VelocityEngine initializeVelocityEngineWithClassPath() {
         final VelocityEngine ve = new VelocityEngine();
         ve.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath");
         ve.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
@@ -78,7 +86,7 @@ public class VelocityMerger {
     }
 
     public String mergeWithContext(final VelocityContext context, final String pathToTemplate) throws VelocityException {
-        final VelocityEngine velocityEngine = initializeVelocityEngine(pathToTemplate);
+        final VelocityEngine velocityEngine = initializeVelocityEngineWithFilePath(pathToTemplate);
         final StringWriter writer = mergeTemplateWithContext(velocityEngine, context);
         return writer.toString();
     }
