@@ -14,7 +14,5 @@ public class StartCommand<T extends ProcessParameter> extends AbstractDefaultPro
 
     @Override
     public void execute(T context) throws CommandException {
-        // TODO Auto-generated method stub
-        
     }
 }
