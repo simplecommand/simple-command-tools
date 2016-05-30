@@ -130,6 +130,10 @@ public class XMLHelper {
                 classStructure.setVersion(innerElement.getText());
             }
             
+            if ("template".equals(innerElement.getName())) {
+                classStructure.setTemplate(innerElement.getText());
+            }
+
             if ("instancevariables".equals(innerElement.getName())) {
                 createInstanceVariables(classStructure, innerElement);
             }

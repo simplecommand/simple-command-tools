@@ -53,10 +53,9 @@ public class ReadConfiguration<T extends Configuration> extends AbstractDefaultC
         LOG.info("Setting configuration information into context");
         context.setOutputPath(loader.getProperty("outputpath"));
         LOG.info("outputpath: " + context.getOutputPath());
-        context.setClassTemplate(loader.getProperty("classtemplate"));
-        LOG.info("classtemplate: " + context.getClassTemplate());
+//        context.setClassTemplate(loader.getProperty("classtemplate"));
+//        LOG.info("classtemplate: " + context.getClassTemplate());
         context.setPathToTemplate(loader.getProperty("pathtotemplates"));
-        LOG.info("classtemplate: " + context.getClassTemplate());
         context.setBasepath(loader.getProperty("basepath"));
         LOG.info("basepath: " + context.getBasepath());
         context.setXmlfile(loader.getProperty("xmlfile"));

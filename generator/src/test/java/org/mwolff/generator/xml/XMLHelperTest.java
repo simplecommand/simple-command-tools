@@ -83,6 +83,7 @@ public class XMLHelperTest {
         Assert.assertThat(structure.getClassComment(), CoreMatchers.is("Structure of a class to generate."));
         Assert.assertThat(structure.getAuthor(), CoreMatchers.is("generator 0.0.2"));
         Assert.assertThat(structure.getVersion(), CoreMatchers.is("1.0.0"));
+        Assert.assertThat(structure.getTemplate(), CoreMatchers.is("class-template.vm"));
         
         List<InstanceVariable> instanceList = structure.getInstanceVariableList();
         Assert.assertThat(instanceList.size(), CoreMatchers.is(9));

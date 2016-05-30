@@ -38,6 +38,7 @@ public class ClassStructure {
     private String packageString;
     private String author;
     private String version;
+    private String template;
     private String hibernate;
     
     public void addImports(String importString) {
@@ -138,5 +139,13 @@ public class ClassStructure {
 
     public void setHibernate(String hibernate) {
         this.hibernate = hibernate;
+    }
+
+    public String getTemplate() {
+        return template;
+    }
+
+    public void setTemplate(String template) {
+        this.template = template;
     }
 }

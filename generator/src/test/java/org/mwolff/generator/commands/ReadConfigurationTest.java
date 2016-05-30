@@ -70,7 +70,6 @@ public class ReadConfigurationTest {
         readConfiguration.execute(configuration);
         assertThat(configuration.getOutputPath(),
                 is("/home/mwolff/windows_shared/mwolffgithub/mwolffgithub/generator/"));
-        assertThat(configuration.getClassTemplate(), is("class-template.vm"));
         assertThat(configuration.getPathToTemplate(), is("src/test/resources"));
         assertThat(configuration.getBasepath(), is("/home/mwolff/windows_shared/mwolffgithub/mwolffgithub/generator"));
         assertThat(configuration.getXmlfile(), is("src/test/resources/class.xml"));

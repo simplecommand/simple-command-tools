@@ -59,7 +59,6 @@ public class ConfigurationTest {
         configuration.setConfiguration("/configuration.properties");
         configuration.setMergeString("myString");
         configuration.setXmlfile("class.xml");
-        configuration.setClassTemplate("class-template.vm");
         configuration.setBasepath("/home/mwolff");
         configuration.setImports("import org.hallo.Address");
         configuration.setActualOutputPath("/home/mwolff/actual");
@@ -77,7 +76,6 @@ public class ConfigurationTest {
         assertThat(configuration.getMergeString(), is("myString"));
         assertThat(configuration.getConfigurationList().size(), is(0));
         assertThat(configuration.getXmlfile(), is("class.xml"));
-        assertThat(configuration.getClassTemplate(), is("class-template.vm"));
         assertThat(configuration.getBasepath(), is("/home/mwolff"));
         assertThat(configuration.getImports(), is("import org.hallo.Address"));
         assertThat(configuration.getActualOutputPath(), is("/home/mwolff/actual"));

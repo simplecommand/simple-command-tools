@@ -65,7 +65,7 @@ public class MergeTemplate<T extends Configuration> extends AbstractDefaultChain
             LOG.info("Preparing structure for Java.");
             
             final VelocityMerger velocityMerger = new VelocityMerger();
-            velocityMerger.setTemplate(context.getClassTemplate());
+            velocityMerger.setTemplate(classStructure.getTemplate());
             VelocityContext veloContext = new VelocityContext();
             veloContext.put("classStructure", classStructure);
             veloContext.put("display",new DisplayTool());
