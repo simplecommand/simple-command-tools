@@ -1,10 +1,12 @@
-package bootstrap;
+package de.neusta.bootstrap;
 
 import java.util.Set;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 import org.junit.Test;
+
+import de.neusta.bootstrap.PackageScanner;
 
 public class PackageScannerTest {
 
