@@ -1,4 +1,4 @@
-package de.neusta.bootstrap;
+package de.neusta.bootstrap.scanner;
 
 import java.util.LinkedList;
 import java.util.List;
