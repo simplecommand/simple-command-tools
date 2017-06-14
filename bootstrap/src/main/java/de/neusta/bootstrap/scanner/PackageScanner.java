@@ -23,15 +23,14 @@ import org.reflections.util.FilterBuilder;
 public class PackageScanner {
 
     /**
-     * Gets all classes in a package that match <code>classToFind</code>.
-     * Object.class finds all the classes.
+     * Gets all classes in a package.
      * 
-     * @param packagePath Full qualified packagepath e.g. de.neusta.bootstrap
-     * @param classToFind Type of class e.g. Object.class.
-     * @return
+     * @param packagePath
+     *            Full qualified package path e.g. de.neusta.bootstrap.test
+     * @return All classes in the selected path
      */
-    public Set<Class<?>> getSubTypesOf(String packagePath, Class<Object> classToFind) {
-        
+    public Set<Class<?>> getSubTypesOf(String packagePath) {
+
         List<ClassLoader> classLoadersList = new LinkedList<ClassLoader>();
         classLoadersList.add(ClasspathHelper.contextClassLoader());
         classLoadersList.add(ClasspathHelper.staticClassLoader());
@@ -42,7 +41,7 @@ public class PackageScanner {
                 .setUrls(ClasspathHelper.forClassLoader(classLoadersList.toArray(new ClassLoader[0])))
                 .filterInputsBy(new FilterBuilder().include(FilterBuilder.prefix(packagePath))));
 
-        Set<Class<?>> classes = reflections.getSubTypesOf(classToFind);
+        Set<Class<?>> classes = reflections.getSubTypesOf(Object.class);
         return classes;
     }
 

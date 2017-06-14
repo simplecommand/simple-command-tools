@@ -20,7 +20,7 @@ public class PackageScannerTest {
 
         PackageScanner packageScanner = new PackageScanner();
         
-        Set<Class<?>> scannedClasses = packageScanner.getSubTypesOf("de.neusta.bootstrap.scanner", Object.class);
+        Set<Class<?>> scannedClasses = packageScanner.getSubTypesOf("de.neusta.bootstrap.test");
 
         assertThat(scannedClasses.size(), is(2));
         
