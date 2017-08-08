@@ -1,15 +1,10 @@
 package de.neusta.bootstrap.scanner;
 
-import java.util.LinkedList;
+import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-import org.reflections.Reflections;
-import org.reflections.scanners.ResourcesScanner;
-import org.reflections.scanners.SubTypesScanner;
-import org.reflections.util.ClasspathHelper;
-import org.reflections.util.ConfigurationBuilder;
-import org.reflections.util.FilterBuilder;
+import org.apache.log4j.Logger;
 
 /**
  * Scans a certain package and returns all classes that belongs in this package
@@ -21,6 +16,8 @@ import org.reflections.util.FilterBuilder;
  *
  */
 public class PackageScanner {
+    
+    private static final Logger LOG = Logger.getLogger(PackageScanner.class);
 
     /**
      * Gets all classes in a package.
@@ -29,20 +26,28 @@ public class PackageScanner {
      *            Full qualified package path e.g. de.neusta.bootstrap.test
      * @return All classes in the selected path
      */
-    public Set<Class<?>> getSubTypesOf(String packagePath) {
-
-        List<ClassLoader> classLoadersList = new LinkedList<ClassLoader>();
-        classLoadersList.add(ClasspathHelper.contextClassLoader());
-        classLoadersList.add(ClasspathHelper.staticClassLoader());
-
-        Reflections reflections = new Reflections(new ConfigurationBuilder()
-                .setScanners(new SubTypesScanner(
-                        false /* don't exclude Object.class */), new ResourcesScanner())
-                .setUrls(ClasspathHelper.forClassLoader(classLoadersList.toArray(new ClassLoader[0])))
-                .filterInputsBy(new FilterBuilder().include(FilterBuilder.prefix(packagePath))));
-
-        Set<Class<?>> classes = reflections.getSubTypesOf(Object.class);
-        return classes;
+    public List<String> getSubTypesOf(String packagePath) {
+        
+        
+        List<String> resultList = new ArrayList<>();
+        LOG.debug("Package path: " + packagePath ) ;
+        
+        String workPath = packagePath;
+        workPath = workPath.replace(".", "/");
+        workPath = "src/main/java/" + workPath;
+                
+        File f = new File(workPath);
+        File[] fileArray = f.listFiles();
+        
+        for (File file : fileArray) {
+            String filename = file.getName();
+            filename = filename.replace(".java", "");
+            filename = packagePath + "." + filename;
+            LOG.debug("Scanned file: " + filename);
+            resultList.add(filename);
+        }
+        
+        return resultList;
     }
 
 }
