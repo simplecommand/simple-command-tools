@@ -70,7 +70,7 @@ public class PasswordServiceTest {
         List<String> errors = null;
         final boolean result = passwordService.valdidate(password);
         errors = passwordService.getErrors();
-             
+         
         // Then
         assertThat(result, CoreMatchers.is(false));
         assertThat(errors.size(), CoreMatchers.is(1));
