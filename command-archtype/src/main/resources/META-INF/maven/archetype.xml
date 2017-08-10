@@ -6,4 +6,6 @@
   <testSources>
     <source>src/test/java/AppTest.java</source>
   </testSources>
+  <resources>src/main/resources/simplecommandframework.xsd</resources>
+  <testResources>src/test/resources/simplecommandframework.xsd</testResources>
 </archetype>
