@@ -1,11 +1,15 @@
 <archetype>
-  <id>command-archtype</id>
-  <sources>
-    <source>src/main/java/App.java</source>
-  </sources>
-  <testSources>
-    <source>src/test/java/AppTest.java</source>
-  </testSources>
-  <resources>src/main/resources/simplecommandframework.xsd</resources>
-  <testResources>src/test/resources/simplecommandframework.xsd</testResources>
+	<id>command-archtype</id>
+	<sources>
+		<source>src/main/java/App.java</source>
+	</sources>
+	<testSources>
+		<source>src/test/java/AppTest.java</source>
+	</testSources>
+	<resources>
+		<resource>src/main/resources/simplecommandframework.xsd</resource>
+	</resources>
+	<testResources>
+		<resource>src/test/resources/simplecommandframework.xsd</resource>
+	</testResources>
 </archetype>

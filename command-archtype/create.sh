@@ -1,1 +1,1 @@
-mvn archetype:generate -DarchetypeGroupId=org.mwolff -DarchetypeArtifactId=command-archtype -DarchetypeVersion=1.0.0 -DgroupId=org.mwolff -DartifactId=commandexample
+mvn archetype:generate -DarchetypeGroupId=org.mwolff -DarchetypeArtifactId=command-archetype -DarchetypeVersion=1.0.0 -DgroupId=<your-groupId> -DartifactId=<your-artefactId>
