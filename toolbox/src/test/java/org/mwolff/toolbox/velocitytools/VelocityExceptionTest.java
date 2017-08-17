@@ -1,4 +1,4 @@
-package org.mwolff.velocitytools;
+package org.mwolff.toolbox.velocitytools;
 /**
     Simple Command Framework.
 
@@ -24,7 +24,6 @@ package org.mwolff.velocitytools;
     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301
     USA
  */
-
 
 import org.hamcrest.Matchers;
 import org.junit.Assert;

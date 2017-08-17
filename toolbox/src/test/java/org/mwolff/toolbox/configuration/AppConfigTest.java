@@ -1,13 +1,12 @@
-package org.mwolff.configuration;
-
-import static org.junit.Assert.*;
+package org.mwolff.toolbox.configuration;
 
 import javax.annotation.Resource;
 
 import org.hamcrest.CoreMatchers;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mwolff.velocitytools.VelocityMerger;
+import org.mwolff.toolbox.velocitytools.VelocityMerger;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -20,7 +19,6 @@ public class AppConfigTest {
 
     @Test
     public void appConfigVelocityMerger() throws Exception {
-        assertThat(velocityMerger, CoreMatchers.notNullValue());
+        Assert.assertThat(velocityMerger, CoreMatchers.notNullValue());
     }
-
 }

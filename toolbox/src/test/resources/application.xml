@@ -19,7 +19,7 @@
 	<context:property-placeholder location="classpath:example.properties" />
 
 	<!-- Java Configuration Class -->
-	<bean class="org.mwolff.configuration.AppConfig"/>
+	<bean class="org.mwolff.toolbox.configuration.AppConfig"/>
 
 	<!-- <bean class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
 		<property name="url" value="${jdbc.url}"/> <property name="username" value="${jdbc.username}"/> 

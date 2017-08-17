@@ -1,4 +1,4 @@
-package org.mwolff.velocitytools;
+package org.mwolff.toolbox.velocitytools;
 
 /**
  * Exception which works with this framework.

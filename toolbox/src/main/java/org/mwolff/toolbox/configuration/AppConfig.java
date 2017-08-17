@@ -1,6 +1,6 @@
-package org.mwolff.configuration;
+package org.mwolff.toolbox.configuration;
 
-import org.mwolff.velocitytools.VelocityMerger;
+import org.mwolff.toolbox.velocitytools.VelocityMerger;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

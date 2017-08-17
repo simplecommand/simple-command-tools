@@ -1,4 +1,4 @@
- package org.mwolff.velocitytools;
+package org.mwolff.toolbox.velocitytools;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -23,20 +23,21 @@ public class PropertyLoader {
     private final Properties properties = new Properties();
 
     public void initialize(final String resource, final Methods method) throws IOException {
-        if (method == Methods.CLASSPATH)
+        if (method == Methods.CLASSPATH) {
             loadPerClathpath(resource);
+        }
         if (method == Methods.FILE) {
             loadPerFile(resource);
         }
     }
 
     public void loadPerFile(final String resource) throws IOException {
-        FileInputStream fileInputStream = new FileInputStream(resource);
-        this.properties.load(fileInputStream);
+        final FileInputStream fileInputStream = new FileInputStream(resource);
+        properties.load(fileInputStream);
     }
 
     public Properties getProperties() {
-        return (Properties) this.properties.clone();
+        return (Properties) properties.clone();
     }
 
     private void loadPerClathpath(final String resource) throws IOException {
@@ -49,28 +50,28 @@ public class PropertyLoader {
     }
 
     private void loadProperties(final InputStream is) throws IOException {
-        this.properties.load(is);
+        properties.load(is);
     }
 
     /**
-     * Gets the property and does String substitution. 
-     * 
-     * key=Welt
-     * key2=Hallo ${key}
-     * 
+     * Gets the property and does String substitution.
+     *
+     * key=Welt key2=Hallo ${key}
+     *
      * assertThat(propertyLoader.getProperty("key2"), is("Hallo Welt"));
-     * 
-     * @param property The key of the property to get.
+     *
+     * @param property
+     *            The key of the property to get.
      * @return
      */
     public String getProperty(String property) {
 
         String toExermine = getProperties().getProperty(property);
-        Set<Object> keySet = getProperties().keySet();
-        for (Object object : keySet) {
-            String key = (String) object;
+        final Set<Object> keySet = getProperties().keySet();
+        for (final Object object : keySet) {
+            final String key = (String) object;
             if (toExermine.contains("${" + key + "}")) {
-                String value = getProperties().getProperty(key);
+                final String value = getProperties().getProperty(key);
                 toExermine = toExermine.replaceAll(Pattern.quote("${" + key + "}"), value);
             }
         }

@@ -1,4 +1,4 @@
-package org.mwolff.velocitytools;
+package org.mwolff.toolbox.velocitytools;
 
 import java.io.StringWriter;
 import java.util.Properties;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * Merges a velocity template with properties of the property file.
- * 
+ *
  * @author Manfred Wolff
  * @since 1.0
  *
@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class VelocityMerger {
 
-    private String template;
+    private String     template;
     private Properties properties;
 
     public void setTemplate(final String template) {
@@ -36,15 +36,15 @@ public class VelocityMerger {
         final VelocityEngine velocityEngine = initializeVelocityEngineWithFilePath(pathToTemplate);
         final VelocityContext context = new VelocityContext();
         movePropertiesToContext(context);
-        StringWriter writer = mergeTemplateWithContext(velocityEngine, context);
+        final StringWriter writer = mergeTemplateWithContext(velocityEngine, context);
         return writer.toString();
     }
-    
+
     public String mergeWithPropertyWithClassPath() throws VelocityException {
         final VelocityEngine velocityEngine = initializeVelocityEngineWithClassPath();
         final VelocityContext context = new VelocityContext();
         movePropertiesToContext(context);
-        StringWriter writer = mergeTemplateWithContext(velocityEngine, context);
+        final StringWriter writer = mergeTemplateWithContext(velocityEngine, context);
         return writer.toString();
     }
 
@@ -53,7 +53,7 @@ public class VelocityMerger {
         ve.setProperty(RuntimeConstants.FILE_RESOURCE_LOADER_PATH, pathToTemplate);
         return ve;
     }
-    
+
     private VelocityEngine initializeVelocityEngineWithClassPath() {
         final VelocityEngine ve = new VelocityEngine();
         ve.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath");
@@ -61,19 +61,18 @@ public class VelocityMerger {
         return ve;
     }
 
-
     private StringWriter mergeTemplateWithContext(final VelocityEngine velocityEngine, final VelocityContext context)
             throws VelocityException {
         Template veloTemplate;
-        veloTemplate = velocityEngine.getTemplate(this.template);
+        veloTemplate = velocityEngine.getTemplate(template);
         final StringWriter writer = new StringWriter();
         veloTemplate.merge(context, writer);
         return writer;
     }
 
     private void movePropertiesToContext(final VelocityContext context) {
-        for (final String prop : this.properties.stringPropertyNames()) {
-            final String value = this.properties.getProperty(prop);
+        for (final String prop : properties.stringPropertyNames()) {
+            final String value = properties.getProperty(prop);
             context.put(prop, value);
         }
     }
@@ -85,7 +84,8 @@ public class VelocityMerger {
         Velocity.evaluate(context, w, "mystring", s);
     }
 
-    public String mergeWithContext(final VelocityContext context, final String pathToTemplate) throws VelocityException {
+    public String mergeWithContext(final VelocityContext context, final String pathToTemplate)
+            throws VelocityException {
         final VelocityEngine velocityEngine = initializeVelocityEngineWithFilePath(pathToTemplate);
         final StringWriter writer = mergeTemplateWithContext(velocityEngine, context);
         return writer.toString();

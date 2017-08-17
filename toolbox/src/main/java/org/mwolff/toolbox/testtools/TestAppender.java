@@ -1,4 +1,4 @@
-package org.mwolff.testtools;
+package org.mwolff.toolbox.testtools;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ import org.apache.log4j.spi.LoggingEvent;
  */
 public class TestAppender extends AppenderSkeleton {
 
-    final List<LoggingEvent> log = new ArrayList<LoggingEvent>();
+    final List<LoggingEvent> log = new ArrayList<>();
 
     /*
      * @see org.apache.log4j.AppenderSkeleton#append(org.apache.log4j.spi.
@@ -26,12 +26,11 @@ public class TestAppender extends AppenderSkeleton {
      */
     @Override
     public void close() {
-        // YTODO Auto-generated method stub
-
+        // Interface method. Does nothing in this case.
     }
 
     public final List<LoggingEvent> getLog() {
-        return new ArrayList<LoggingEvent>(log);
+        return new ArrayList<>(log);
     }
 
     /*
