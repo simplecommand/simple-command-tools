@@ -1,8 +1,8 @@
 package org.mwolff.resourceloader.commands;
 
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
-import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 
 public class FileLoaderCommandTest {
@@ -13,13 +13,13 @@ public class FileLoaderCommandTest {
     public void testReadFileFails() throws Exception {
         final FileLoaderCommand scanFile = new FileLoaderCommand();
         final boolean result = scanFile.executeAsChain("invalidFilename");
-        assertThat(result, CoreMatchers.is(Boolean.TRUE));
+        assertThat(result, is(Boolean.TRUE));
     }
     
     @Test
     public void testReadFile() throws Exception {
         final FileLoaderCommand scanFile = new FileLoaderCommand();
         final boolean result = scanFile.executeAsChain(filename);
-        assertThat(result, CoreMatchers.is(Boolean.FALSE));
+        assertThat(result, is(Boolean.FALSE));
     }
 }
