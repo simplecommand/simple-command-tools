@@ -1,14 +1,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>org.mwolff</groupId>
-  <artifactId>command-archetype</artifactId>
-  <version>1.4.0</version>
-  <name>Archetype - command-archtype</name>
-  <url>http://mwolff.info/wiki/display/SCF/The+Simple+Command+Framework</url>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.mwolff</groupId>
+	<artifactId>command-archetype</artifactId>
+	<version>1.4.0</version>
+	<name>Archetype - command-archtype</name>
+	<url>http://mwolff.info/wiki/display/SCF/The+Simple+Command+Framework</url>
+	<description>An archetype for building the command framework.</description>
 
- 	<!-- adapt your own Spring version --> 
-  	<properties>
+	<!-- adapt your own Spring version -->
+	<properties>
 		<springframework.version>4.2.0.RELEASE</springframework.version>
 	</properties>
 
@@ -25,13 +26,22 @@
 		<url>http://neusta-sd.de</url>
 	</organization>
 
+	<developers>
+		<developer>
+			<name>Manfred Wolff</name>
+			<email>m.wolff@neusta.de</email>
+			<organization>neusta software development GmbH</organization>
+			<organizationUrl>http://www.neusta-se.de</organizationUrl>
+		</developer>
+	</developers>
+
 	<scm>
 		<url>https://github.com/simplecommand/SimpleCommandFramework-examples</url>
 		<developerConnection>mannewolff</developerConnection>
 	</scm>
 
 	<dependencies>
-	
+
 		<!-- Log4J -->
 		<dependency>
 			<groupId>log4j</groupId>
@@ -120,7 +130,7 @@
 			<version>1</version>
 		</dependency>
 
-    	<!-- mwolff -->
+		<!-- mwolff -->
 
 		<dependency>
 			<groupId>org.mwolff</groupId>
@@ -147,5 +157,5 @@
 			</plugin>
 		</plugins>
 	</build>
-  
+
 </project>
