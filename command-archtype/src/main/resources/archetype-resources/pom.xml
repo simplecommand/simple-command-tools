@@ -4,6 +4,7 @@
 	<groupId>${groupId}</groupId>
 	<artifactId>${artifactId}</artifactId>
 	<version>${version}</version>
+
 	<dependencies>
 
 		<!-- Log4J -->
@@ -94,7 +95,7 @@
 			<version>1</version>
 		</dependency>
 
-		<!-- mwolff -->
+		<!-- mwolff.org -->
 		<dependency>
 			<groupId>org.mwolff</groupId>
 			<artifactId>command</artifactId>
