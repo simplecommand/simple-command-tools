@@ -1,4 +1,4 @@
-package $org.mwolff;
+package ${package};
 
 import junit.framework.Test;
 import junit.framework.TestCase;

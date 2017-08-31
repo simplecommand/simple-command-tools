@@ -1,4 +1,4 @@
-package $org.mwolff;
+package ${package};
 
 /**
  * Hello world!
