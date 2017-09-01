@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.mwolff.command.CommandContainer;
 import org.mwolff.command.DefaultCommandContainer;
 import org.mwolff.command.chain.ChainBuilder;
+import org.mwolff.command.chain.InjectionChainBuilder;
 import org.mwolff.command.chain.XMLChainBuilder;
 import org.mwolff.resourceloader.commands.ClassLoaderCommand;
 import org.mwolff.resourceloader.commands.FileLoaderCommand;
