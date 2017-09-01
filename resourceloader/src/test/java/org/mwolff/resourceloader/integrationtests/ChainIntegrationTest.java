@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.mwolff.command.CommandContainer;
 import org.mwolff.command.DefaultCommandContainer;
 import org.mwolff.command.chain.ChainBuilder;
+import org.mwolff.command.chain.InjectionChainBuilder;
 import org.mwolff.command.chain.XMLChainBuilder;
 import org.mwolff.resourceloader.commands.ClassLoaderCommand;
 import org.mwolff.resourceloader.commands.FileLoaderCommand;
@@ -28,7 +29,7 @@ public class ChainIntegrationTest {
     @Test
     public void testGreenPathXML() throws Exception {
         ChainBuilder<String> builder = new XMLChainBuilder<>("/chain.xml");
-        boolean result = builder.buildChain().executeAsChain("test.txt");
+        boolean result = builder.executeAsChain("test.txt");
         assertThat(result, is(Boolean.FALSE));
     }
     
