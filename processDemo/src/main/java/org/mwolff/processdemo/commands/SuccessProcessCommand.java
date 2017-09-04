@@ -1,9 +1,7 @@
 package org.mwolff.processdemo.commands;
 
 import org.mwolff.command.process.AbstractDefaultProcessCommand;
-import org.mwolff.command.process.ProcessCommand;
 import org.springframework.util.StringUtils;
-import org.w3c.dom.views.AbstractView;
 
 public class SuccessProcessCommand extends AbstractDefaultProcessCommand<PaymentParameterObject> {
 
