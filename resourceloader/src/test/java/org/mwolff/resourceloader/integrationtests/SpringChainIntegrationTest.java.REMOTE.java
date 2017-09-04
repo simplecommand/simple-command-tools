@@ -36,7 +36,7 @@ public class SpringChainIntegrationTest {
     
     @Test
     public void testGreenPathSpring() throws Exception {
-        boolean result = injectionChainBuilder.executeAsChain("test.txt");
+        boolean result = injectionChainBuilder.buildChain().executeAsChain("test.txt");
         assertThat(result, is(Boolean.FALSE));
     }
  
