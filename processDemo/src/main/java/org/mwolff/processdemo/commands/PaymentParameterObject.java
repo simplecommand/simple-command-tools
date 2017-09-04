@@ -5,6 +5,7 @@ public class PaymentParameterObject {
     private String customerAccountNumber;
     private boolean fail;
     private boolean premium;
+    private double value;
 
     public String getCustomerAccountNumber() {
         return customerAccountNumber;
@@ -28,5 +29,13 @@ public class PaymentParameterObject {
 
     public void setPremium(boolean premium) {
         this.premium = premium;
+    }
+
+    public double getValue() {
+        return value;
+    }
+
+    public void setValue(double value) {
+        this.value = value;
     }
 }
