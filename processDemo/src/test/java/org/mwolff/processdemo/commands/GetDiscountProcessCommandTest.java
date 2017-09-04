@@ -19,5 +19,19 @@ public class GetDiscountProcessCommandTest {
         assertThat(value, is(90.0));
     }
 
+    @Test
+    public void testDiscountTestMode() throws Exception {
+        GetDiscountProcessCommand getDiscountProcessCommand = new GetDiscountProcessCommand();
+        getDiscountProcessCommand.setProcessID("DISCOUNT");
+        PaymentParameterObject paymentParameterObject = new PaymentParameterObject();
+        paymentParameterObject.setTestmode(true);
+        paymentParameterObject.setValue(100.0);
+        String next = getDiscountProcessCommand.executeAsProcess(paymentParameterObject);
+        assertThat(next, is("SUCCESS"));
+        String breadCrumb = paymentParameterObject.getBreadCrumb();
+        assertThat(breadCrumb, is(" => DISCOUNT"));
+        double value = paymentParameterObject.getValue();
+        assertThat(value, is(90.0));
+    }
 
 }

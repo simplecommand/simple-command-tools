@@ -1,5 +1,6 @@
 package org.mwolff.processdemo.commands;
 
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 import org.hamcrest.CoreMatchers;
@@ -32,5 +33,18 @@ public class IdentifyCustomerProcessTest {
         IdentifyCustomerProcess identifyCustomerProcess = new IdentifyCustomerProcess();
         String next = identifyCustomerProcess.executeAsProcess(paymentParameterObject);
         assertThat(next, CoreMatchers.is("SUCCESS"));
+    }
+    
+    @Test
+    public void testTestMode() throws Exception {
+        IdentifyCustomerProcess identifyCustomerProcess = new IdentifyCustomerProcess();
+        identifyCustomerProcess.setProcessID("IDENTIFY");
+        PaymentParameterObject paymentParameterObject = new PaymentParameterObject();
+        paymentParameterObject.setTestmode(true);
+        paymentParameterObject.setCustomerAccountNumber("40");
+        String next = identifyCustomerProcess.executeAsProcess(paymentParameterObject);
+        assertThat(next, CoreMatchers.is("SUCCESS"));
+        String breadCrumb = paymentParameterObject.getBreadCrumb();
+        assertThat(breadCrumb, is(" => IDENTIFY"));
     }
 }

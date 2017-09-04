@@ -1,6 +1,7 @@
 package org.mwolff.processdemo.commands;
 
 import org.mwolff.command.process.AbstractDefaultProcessCommand;
+import org.springframework.util.StringUtils;
 
 public class IdentifyCustomerProcess extends AbstractDefaultProcessCommand<PaymentParameterObject>{
 
@@ -34,6 +35,14 @@ public class IdentifyCustomerProcess extends AbstractDefaultProcessCommand<Payme
             } else {
                 parameterObject.setPremium(true);
             }
+        }
+        
+        if (parameterObject.isTestmode()) {
+            String breadCrumb = parameterObject.getBreadCrumb();
+            if (StringUtils.isEmpty(breadCrumb)) breadCrumb = "";
+
+            breadCrumb = breadCrumb + " => " + getProcessID();
+            parameterObject.setBreadCrumb(breadCrumb);
         }
         
     }

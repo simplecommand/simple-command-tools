@@ -1,12 +1,15 @@
 package org.mwolff.processdemo.commands;
 
-import org.mwolff.command.CommandException;
 import org.mwolff.command.process.AbstractDefaultProcessCommand;
+import org.mwolff.command.process.ProcessCommand;
+import org.springframework.util.StringUtils;
+import org.w3c.dom.views.AbstractView;
 
-public class SuccessProcessCommand extends AbstractDefaultProcessCommand<PaymentParameterObject>{
+public class SuccessProcessCommand extends AbstractDefaultProcessCommand<PaymentParameterObject> {
 
     @Override
     public String executeAsProcess(PaymentParameterObject context) {
+        execute(context);
         return "SUCCESS";
     }
     
@@ -16,7 +19,14 @@ public class SuccessProcessCommand extends AbstractDefaultProcessCommand<Payment
     }
 
     @Override
-    public void execute(PaymentParameterObject parameterObject) throws CommandException {
-    }
+    public void execute(PaymentParameterObject parameterObject) {
+        if (parameterObject.isTestmode()) {
+            String breadCrumb = parameterObject.getBreadCrumb();
+            if (StringUtils.isEmpty(breadCrumb)) breadCrumb = "";
 
+            breadCrumb = breadCrumb + " => " + getProcessID();
+            parameterObject.setBreadCrumb(breadCrumb);
+        }
+        
+    }
 }

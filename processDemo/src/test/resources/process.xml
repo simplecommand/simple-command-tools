@@ -1,8 +1,38 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <process xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="simplecommandframework.xsd">
-    <action class="org.mwolff.processdemo.commands.InitiatePaymentCommand" id="START">
-    <transition name="SUCCESS" to="END"></transition>
-    </action>
-    <action class="org.mwolff.command.process.DefaultEndCommand" id="END"/>
+	xsi:noNamespaceSchemaLocation="simplecommandframework.xsd">
+
+	<action class="org.mwolff.processdemo.commands.InitiatePaymentCommand"
+		id="START">
+		<transition name="SUCCESS" to="IDENTIFY_CUSTOMER"></transition>
+	</action>
+	
+	<action class="org.mwolff.processdemo.commands.IdentifyCustomerProcess"
+		id="IDENTIFY_CUSTOMER">
+		<transition name="FAIL" to="END"></transition>
+		<transition name="PREMIUM" to="GET_DISCOUNT"></transition>
+		<transition name="SUCCESS" to="NOT_A_PREMIUM"></transition>
+	</action>
+	
+	<action class="org.mwolff.processdemo.commands.GetDiscountProcessCommand"
+		id="GET_DISCOUNT">
+		<transition name="SUCCESS" to="CALCULATE_PRICE"></transition>
+	</action>
+
+	<action class="org.mwolff.processdemo.commands.SuccessProcessCommand"
+		id="GET_DISCOUNT">
+		<transition name="SUCCESS" to="CALCULATE_PRICE"></transition>
+	</action>
+
+	<action class="org.mwolff.processdemo.commands.SuccessProcessCommand"
+		id="NOT_A_PREMIUM">
+		<transition name="SUCCESS" to="CALCULATE_PRICE"></transition>
+	</action>
+
+	<action class="org.mwolff.processdemo.commands.SuccessProcessCommand"
+		id="CALCULATE_PRICE">
+		<transition name="SUCCESS" to="END"></transition>
+	</action>
+
+	<action class="org.mwolff.command.process.DefaultEndCommand" id="END" />
 </process>
