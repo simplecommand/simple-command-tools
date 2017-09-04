@@ -6,6 +6,9 @@ public class PaymentParameterObject {
     private boolean fail;
     private boolean premium;
     private double value;
+    
+    private boolean testmode;
+    private String breadCrumb;
 
     public String getCustomerAccountNumber() {
         return customerAccountNumber;
@@ -37,5 +40,21 @@ public class PaymentParameterObject {
 
     public void setValue(double value) {
         this.value = value;
+    }
+
+    public boolean isTestmode() {
+        return testmode;
+    }
+
+    public void setTestmode(boolean testmode) {
+        this.testmode = testmode;
+    }
+
+    public String getBreadCrumb() {
+        return breadCrumb;
+    }
+
+    public void setBreadCrumb(String breadCrumb) {
+        this.breadCrumb = breadCrumb;
     }
 }
