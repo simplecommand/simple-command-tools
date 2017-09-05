@@ -3,9 +3,9 @@ package org.mwolff.resourceloader.commands;
 import java.io.InputStream;
 
 import org.mwolff.command.CommandException;
-import org.mwolff.command.chain.ChainCommand;
+import org.mwolff.command.chain.AbstractDefaultChainCommand;
 
-public class ClassLoaderCommand implements ChainCommand<String>{
+public class ClassLoaderCommand extends AbstractDefaultChainCommand<String>{
 
     @Override
     public boolean executeAsChain(String parameterObject) {
