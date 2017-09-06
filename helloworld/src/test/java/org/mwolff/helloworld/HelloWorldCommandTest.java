@@ -19,8 +19,7 @@ public class HelloWorldCommandTest {
     @Test
     public void testExecute() throws Exception {
         thrown.expect(UnsupportedOperationException.class);
-        HelloWorldCommand instance = HelloWorldCommand.getInstance();
-        instance.execute(null);
+        HelloWorldCommand.getInstance().execute(null);
     }
     
     @Test
@@ -32,9 +31,8 @@ public class HelloWorldCommandTest {
     
     @Test
     public void testExecuteHelloWorld() throws Exception {
-        HelloWorldCommand helloWorldCommand = HelloWorldCommand.getInstance();
         GenericParameterObject context = DefaultParameterObject.getInstance();
-        CommandTransition result = helloWorldCommand.executeCommand(context);
+        CommandTransition result = HelloWorldCommand.getInstance().executeCommand(context);
         assertThat(result, is(CommandTransition.SUCCESS));
         assertThat(context.getAsString("helloworld.message"), is("Hello World"));
     }

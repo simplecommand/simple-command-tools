@@ -1,11 +1,10 @@
 package org.mwolff.helloworld;
 
-import org.mwolff.command.Command;
-import org.mwolff.command.CommandException;
+import org.mwolff.command.AbstractDefaultCommand;
 import org.mwolff.command.CommandTransitionEnum.CommandTransition;
 import org.mwolff.command.parameterobject.GenericParameterObject;
 
-public class SecondCommand implements Command<GenericParameterObject>{
+public class SecondCommand extends AbstractDefaultCommand<GenericParameterObject>{
 
     public static final SecondCommand getInstance() {
         return new SecondCommand();
@@ -18,10 +17,4 @@ public class SecondCommand implements Command<GenericParameterObject>{
         parameterObject.put("helloworld.message", message);
         return CommandTransition.SUCCESS;
     }
-    
-    @Override
-    public void execute(GenericParameterObject parameterObject) throws CommandException {
-        throw new UnsupportedOperationException("Deprecated, use executeCommand instead.");
-    }
-    
 }

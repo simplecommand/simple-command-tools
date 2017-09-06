@@ -21,7 +21,5 @@ public class HelloWorldCommand implements Command<GenericParameterObject>{
     public CommandTransition executeCommand(GenericParameterObject parameterObject) {
         parameterObject.put("helloworld.message","Hello World");
         return CommandTransition.SUCCESS;
-        
     }
-
 }
