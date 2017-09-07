@@ -3,7 +3,6 @@ package org.mwolff.helloworld;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
-import org.hamcrest.CoreMatchers;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -25,8 +24,7 @@ public class HelloWorldCommandTest {
     @Test
     public void getInstanceTest() throws Exception {
         HelloWorldCommand instance = HelloWorldCommand.getInstance();
-        assertThat(instance, notNullValue());
-        assertThat(instance, CoreMatchers.instanceOf(HelloWorldCommand.class));
+        assertThat(instance, instanceOf(HelloWorldCommand.class));
     }
     
     @Test
