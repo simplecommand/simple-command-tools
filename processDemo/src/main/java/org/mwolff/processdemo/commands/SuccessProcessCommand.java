@@ -34,4 +34,5 @@ public class SuccessProcessCommand extends AbstractDefaultProcessCommand<Payment
         // TODO Auto-generated method stub
         return null;
     }
+
 }

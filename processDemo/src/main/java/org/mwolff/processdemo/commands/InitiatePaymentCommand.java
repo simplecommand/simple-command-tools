@@ -40,5 +40,4 @@ public class InitiatePaymentCommand extends AbstractDefaultProcessCommand<Paymen
         // TODO Auto-generated method stub
         return null;
     }
-
 }
