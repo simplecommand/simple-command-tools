@@ -4,14 +4,13 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-import org.mwolff.command.chain.ChainBuilder;
 import org.mwolff.command.chain.XMLChainBuilder;
 
 public class IntegrationTest {
     
     @Test
     public void testPremium() throws Exception {
-        ChainBuilder<PaymentParameterObject> xmlChainBuilder = new XMLChainBuilder<>("/process.xml");
+        XMLChainBuilder<PaymentParameterObject> xmlChainBuilder = new XMLChainBuilder<>("/process.xml");
         PaymentParameterObject paymentParameterObject = new PaymentParameterObject();
         paymentParameterObject.setTestmode(true);
         paymentParameterObject.setCustomerAccountNumber("31");
@@ -25,7 +24,7 @@ public class IntegrationTest {
 
     @Test
     public void testFail() throws Exception {
-        ChainBuilder<PaymentParameterObject> xmlChainBuilder = new XMLChainBuilder<>("/process.xml");
+        XMLChainBuilder<PaymentParameterObject> xmlChainBuilder = new XMLChainBuilder<>("/process.xml");
         PaymentParameterObject paymentParameterObject = new PaymentParameterObject();
         paymentParameterObject.setTestmode(true);
         paymentParameterObject.setCustomerAccountNumber("30");
@@ -38,7 +37,7 @@ public class IntegrationTest {
     }
     @Test
     public void testNotAPremium() throws Exception {
-        ChainBuilder<PaymentParameterObject> xmlChainBuilder = new XMLChainBuilder<>("/process.xml");
+        XMLChainBuilder<PaymentParameterObject> xmlChainBuilder = new XMLChainBuilder<>("/process.xml");
         PaymentParameterObject paymentParameterObject = new PaymentParameterObject();
         paymentParameterObject.setTestmode(true);
         paymentParameterObject.setCustomerAccountNumber("20");
