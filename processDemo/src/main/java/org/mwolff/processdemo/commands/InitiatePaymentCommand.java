@@ -2,6 +2,7 @@ package org.mwolff.processdemo.commands;
 
 import java.util.Random;
 
+import org.mwolff.command.CommandTransitionEnum.CommandTransition;
 import org.mwolff.command.process.AbstractDefaultProcessCommand;
 import org.springframework.util.StringUtils;
 
@@ -32,6 +33,12 @@ public class InitiatePaymentCommand extends AbstractDefaultProcessCommand<Paymen
     @Override
     public boolean executeAsChain(PaymentParameterObject parameterObject) {
         return false;
+    }
+
+    @Override
+    public CommandTransition executeCommand(PaymentParameterObject parameterObject) {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }

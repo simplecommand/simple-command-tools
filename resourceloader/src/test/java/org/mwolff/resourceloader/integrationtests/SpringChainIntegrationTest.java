@@ -10,6 +10,7 @@ import javax.annotation.Resource;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mwolff.command.Command;
+import org.mwolff.command.CommandTransitionEnum.CommandTransition;
 import org.mwolff.command.chain.ChainBuilder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -36,8 +37,8 @@ public class SpringChainIntegrationTest {
     
     @Test
     public void testGreenPathSpring() throws Exception {
-        boolean result = injectionChainBuilder.executeAsChain("test.txt");
-        assertThat(result, is(Boolean.FALSE));
+        CommandTransition result = injectionChainBuilder.executeCommandAsChain("test.txt");
+        assertThat(result, is(CommandTransition.DONE));
     }
  
 }

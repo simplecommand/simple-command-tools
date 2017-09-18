@@ -1,33 +1,35 @@
 package org.mwolff.processdemo.commands;
 
+import org.mwolff.command.CommandException;
+import org.mwolff.command.CommandTransitionEnum.CommandTransition;
 import org.mwolff.command.process.AbstractDefaultProcessCommand;
 import org.springframework.util.StringUtils;
 
-public class GetDiscountProcessCommand extends AbstractDefaultProcessCommand<PaymentParameterObject>{
+public class GetDiscountProcessCommand extends AbstractDefaultProcessCommand<PaymentParameterObject> {
 
     @Override
     public String executeAsProcess(PaymentParameterObject context) {
-        execute(context);
+        executeCommand(context);
         return "SUCCESS";
-    }
-    
-    @Override
-    public boolean executeAsChain(PaymentParameterObject parameterObject) {
-        return false;
     }
 
     @Override
-    public void execute(PaymentParameterObject parameterObject) {
-        
+    public CommandTransition executeCommand(PaymentParameterObject parameterObject) {
         parameterObject.setValue(parameterObject.getValue() * 0.9);
 
         if (parameterObject.isTestmode()) {
             String breadCrumb = parameterObject.getBreadCrumb();
-            if (StringUtils.isEmpty(breadCrumb)) breadCrumb = "";
-            
+            if (StringUtils.isEmpty(breadCrumb))
+                breadCrumb = "";
+
             breadCrumb = breadCrumb + " => " + getProcessID();
             parameterObject.setBreadCrumb(breadCrumb);
         }
-        
+        return CommandTransition.SUCCESS;
+    }
+
+    @Override
+    public void execute(PaymentParameterObject context) throws CommandException {
+        throw new UnsupportedOperationException("Deprecated: Use executeCommand.");
     }
 }

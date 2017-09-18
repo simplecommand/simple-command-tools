@@ -3,23 +3,33 @@ package org.mwolff.resourceloader.commands;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
+import org.mwolff.command.CommandTransitionEnum.CommandTransition;
 
 public class FileLoaderCommandTest {
 
     private final String filename = "src/test/resources/test.txt";
+    
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+
+    @Test
+    public void testExecute() throws Exception {
+        thrown.expect(UnsupportedOperationException.class);
+        new FileLoaderCommand().execute(null);
+    }
 
     @Test
     public void testReadFileFails() throws Exception {
-        final FileLoaderCommand scanFile = new FileLoaderCommand();
-        final boolean result = scanFile.executeAsChain("invalidFilename");
-        assertThat(result, is(Boolean.TRUE));
+        final CommandTransition result = new FileLoaderCommand().executeCommandAsChain("invalidFilename");
+        assertThat(result, is(CommandTransition.NEXT));
     }
     
     @Test
     public void testReadFile() throws Exception {
-        final FileLoaderCommand scanFile = new FileLoaderCommand();
-        final boolean result = scanFile.executeAsChain(filename);
-        assertThat(result, is(Boolean.FALSE));
+        final CommandTransition result = new FileLoaderCommand().executeCommandAsChain(filename);
+        assertThat(result, is(CommandTransition.DONE));
     }
 }

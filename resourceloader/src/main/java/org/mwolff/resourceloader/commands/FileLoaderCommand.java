@@ -4,31 +4,26 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-import org.mwolff.command.CommandException;
-import org.mwolff.command.chain.ChainCommand;
+import org.mwolff.command.CommandTransitionEnum.CommandTransition;
+import org.mwolff.command.chain.AbstractDefaultChainCommand;
 
-public class FileLoaderCommand implements ChainCommand<String> {
+public class FileLoaderCommand extends AbstractDefaultChainCommand<String> {
 
-    /**
-     * executeAsChain() has to return true, if the next command should overtake,
-     * false otherwise. So actually false means that the issue of the whole
-     * chain is solved.
-     */
     @Override
-    public boolean executeAsChain(String parameterObject) {
+    public CommandTransition executeCommandAsChain(String parameterObject) {
 
         final String filename = parameterObject;
         try {
             new FileInputStream(new File(filename));
         } catch (FileNotFoundException e) {
-            return true;
+            return CommandTransition.NEXT;
         }
-        return false;
+        return CommandTransition.DONE;
     }
 
     @Override
-    public void execute(String parameterObject) throws CommandException {
-        throw new UnsupportedOperationException("Use executeAsChain instead.");
-    }
+    public CommandTransition executeCommand(String parameterObject) {
+        throw new UnsupportedOperationException("Use executeCommandAsChain instead.");
+   }
 
 }

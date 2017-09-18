@@ -4,6 +4,7 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import org.mwolff.command.CommandTransitionEnum.CommandTransition;
 
 public class ClassLoaderCommandTest {
 
@@ -11,13 +12,13 @@ public class ClassLoaderCommandTest {
     
     @Test
     public void testReadBadFile() throws Exception {
-        final boolean result = new ClassLoaderCommand().executeAsChain("/BadPath");
-        assertThat(result, is(Boolean.TRUE));
+        final CommandTransition result = new ClassLoaderCommand().executeCommandAsChain("/BadPath");
+        assertThat(result, is(CommandTransition.NEXT));
     }
 
     @Test
     public void testReadGoodFile() throws Exception {
-        final boolean result = new ClassLoaderCommand().executeAsChain(classPathRessource);
-        assertThat(result, is(Boolean.FALSE));
+        final CommandTransition result = new ClassLoaderCommand().executeCommandAsChain(classPathRessource);
+        assertThat(result, is(CommandTransition.DONE));
     }
 }
