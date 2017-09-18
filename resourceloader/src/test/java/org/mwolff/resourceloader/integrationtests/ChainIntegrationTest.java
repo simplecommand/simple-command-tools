@@ -7,7 +7,6 @@ import org.junit.Test;
 import org.mwolff.command.CommandContainer;
 import org.mwolff.command.CommandTransitionEnum.CommandTransition;
 import org.mwolff.command.DefaultCommandContainer;
-import org.mwolff.command.chain.ChainBuilder;
 import org.mwolff.command.chain.XMLChainBuilder;
 import org.mwolff.resourceloader.commands.ClassLoaderCommand;
 import org.mwolff.resourceloader.commands.FileLoaderCommand;
@@ -28,7 +27,7 @@ public class ChainIntegrationTest {
 
     @Test
     public void testGreenPathXML() throws Exception {
-        ChainBuilder<String> builder = new XMLChainBuilder<>("/chain.xml");
+        XMLChainBuilder<String> builder = new XMLChainBuilder<>("/chain.xml");
         CommandTransition result = builder.executeCommandAsChain("test.txt");
         assertThat(result, is(CommandTransition.DONE));
     }
