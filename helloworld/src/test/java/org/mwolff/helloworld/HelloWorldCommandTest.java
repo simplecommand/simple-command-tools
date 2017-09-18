@@ -3,28 +3,16 @@ package org.mwolff.helloworld;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 import org.mwolff.command.CommandTransitionEnum.CommandTransition;
 import org.mwolff.command.parameterobject.DefaultParameterObject;
 import org.mwolff.command.parameterobject.GenericParameterObject;
 
 public class HelloWorldCommandTest {
 
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
-
-    @Test
-    public void testExecute() throws Exception {
-        thrown.expect(UnsupportedOperationException.class);
-        HelloWorldCommand.getInstance().execute(null);
-    }
-    
     @Test
     public void getInstanceTest() throws Exception {
-        HelloWorldCommand instance = HelloWorldCommand.getInstance();
-        assertThat(instance, instanceOf(HelloWorldCommand.class));
+        assertThat(HelloWorldCommand.getInstance(), instanceOf(HelloWorldCommand.class));
     }
     
     @Test
