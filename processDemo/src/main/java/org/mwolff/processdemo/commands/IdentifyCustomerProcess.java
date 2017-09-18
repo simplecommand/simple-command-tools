@@ -56,10 +56,4 @@ public class IdentifyCustomerProcess extends AbstractDefaultProcessCommand<Payme
         return integer % 3 == 0;
     }
 
-    @Override
-    public CommandTransition executeCommand(PaymentParameterObject parameterObject) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
 }

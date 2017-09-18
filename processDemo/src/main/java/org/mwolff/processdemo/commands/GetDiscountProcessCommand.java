@@ -1,6 +1,5 @@
 package org.mwolff.processdemo.commands;
 
-import org.mwolff.command.CommandException;
 import org.mwolff.command.CommandTransitionEnum.CommandTransition;
 import org.mwolff.command.process.AbstractDefaultProcessCommand;
 import org.springframework.util.StringUtils;
@@ -26,10 +25,5 @@ public class GetDiscountProcessCommand extends AbstractDefaultProcessCommand<Pay
             parameterObject.setBreadCrumb(breadCrumb);
         }
         return CommandTransition.SUCCESS;
-    }
-
-    @Override
-    public void execute(PaymentParameterObject context) throws CommandException {
-        throw new UnsupportedOperationException("Deprecated: Use executeCommand.");
     }
 }
