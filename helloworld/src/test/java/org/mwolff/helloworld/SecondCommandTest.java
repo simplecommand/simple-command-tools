@@ -21,9 +21,9 @@ public class SecondCommandTest {
     @Test
     public void testHowAreYou() throws Exception {
         GenericParameterObject parameterObject = DefaultParameterObject.getInstance();
-        parameterObject.put("helloworld.message","");
+        parameterObject.put(SecondCommand.helloworld_message,"");
         CommandTransition result = SecondCommand.getInstance().executeCommand(parameterObject);
-        assertThat(parameterObject.getAsString("helloworld.message"), is(" How are you?"));
+        assertThat(parameterObject.getAsString(SecondCommand.helloworld_message), is(" How are you?"));
         assertThat(result, is(CommandTransition.SUCCESS));
     }
     
@@ -38,7 +38,7 @@ public class SecondCommandTest {
             .addCommand(SecondCommand.getInstance())
             .executeCommand(parameterObject);
         
-        assertThat(parameterObject.getAsString("helloworld.message"), is("Hello World How are you?"));
+        assertThat(parameterObject.getAsString(SecondCommand.helloworld_message), is("Hello World How are you?"));
         assertThat(result, is(CommandTransition.SUCCESS));
     }
 }

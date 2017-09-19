@@ -12,15 +12,6 @@ public class FileLoaderCommandTest {
 
     private final String filename = "src/test/resources/test.txt";
     
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
-
-    @Test
-    public void testExecute() throws Exception {
-        thrown.expect(UnsupportedOperationException.class);
-        new FileLoaderCommand().execute(null);
-    }
-
     @Test
     public void testReadFileFails() throws Exception {
         final CommandTransition result = new FileLoaderCommand().executeCommandAsChain("invalidFilename");
