@@ -2,7 +2,7 @@ package org.mwolff.resourceloader.commands;
 
 import java.io.InputStream;
 
-import org.mwolff.command.CommandTransitionEnum.CommandTransition;
+import org.mwolff.command.CommandTransition;
 import org.mwolff.command.chain.AbstractDefaultChainCommand;
 
 public class ClassLoaderCommand extends AbstractDefaultChainCommand<String>{

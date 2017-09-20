@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-import org.mwolff.command.CommandTransitionEnum.CommandTransition;
+import org.mwolff.command.CommandTransition;
 import org.mwolff.command.chain.AbstractDefaultChainCommand;
 
 public class FileLoaderCommand extends AbstractDefaultChainCommand<String> {

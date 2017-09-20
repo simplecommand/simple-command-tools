@@ -1,7 +1,7 @@
 package org.mwolff.helloworld;
 
 import org.mwolff.command.AbstractDefaultCommand;
-import org.mwolff.command.CommandTransitionEnum.CommandTransition;
+import org.mwolff.command.CommandTransition;
 import org.mwolff.command.parameterobject.GenericParameterObject;
 
 public class SecondCommand extends AbstractDefaultCommand<GenericParameterObject>{

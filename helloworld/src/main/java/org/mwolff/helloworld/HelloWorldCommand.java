@@ -2,7 +2,7 @@ package org.mwolff.helloworld;
 
 import org.mwolff.command.Command;
 import org.mwolff.command.CommandException;
-import org.mwolff.command.CommandTransitionEnum.CommandTransition;
+import org.mwolff.command.CommandTransition;
 import org.mwolff.command.parameterobject.GenericParameterObject;
 
 public class HelloWorldCommand implements Command<GenericParameterObject>{

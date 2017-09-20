@@ -2,7 +2,7 @@ package org.mwolff.processdemo.commands;
 
 import java.util.Random;
 
-import org.mwolff.command.CommandTransitionEnum.CommandTransition;
+import org.mwolff.command.CommandTransition;
 import org.mwolff.command.process.AbstractDefaultProcessCommand;
 import org.springframework.util.StringUtils;
 
