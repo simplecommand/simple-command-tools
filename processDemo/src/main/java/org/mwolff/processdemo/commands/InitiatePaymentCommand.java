@@ -10,13 +10,12 @@ public class InitiatePaymentCommand extends AbstractDefaultProcessCommand<Paymen
 
     @Override
     public String executeAsProcess(PaymentParameterObject context) {
-        execute(context);
+        executeCommand(context);
         return "SUCCESS";
     }
 
     @Override
-    public void execute(PaymentParameterObject parameterObject) {
-
+    public CommandTransition executeCommand(PaymentParameterObject parameterObject) {
         if (!parameterObject.isTestmode()) {
             Random rn = new Random();
             int n = Integer.MAX_VALUE;
@@ -28,16 +27,6 @@ public class InitiatePaymentCommand extends AbstractDefaultProcessCommand<Paymen
             breadCrumb = breadCrumb + " => " + getProcessID();
             parameterObject.setBreadCrumb(breadCrumb);
         }
-    }
-
-    @Override
-    public boolean executeAsChain(PaymentParameterObject parameterObject) {
-        return false;
-    }
-
-    @Override
-    public CommandTransition executeCommand(PaymentParameterObject parameterObject) {
-        // TODO Auto-generated method stub
-        return null;
+        return CommandTransition.SUCCESS;
     }
 }

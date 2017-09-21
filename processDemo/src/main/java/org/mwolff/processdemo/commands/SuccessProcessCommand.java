@@ -8,17 +8,12 @@ public class SuccessProcessCommand extends AbstractDefaultProcessCommand<Payment
 
     @Override
     public String executeAsProcess(PaymentParameterObject context) {
-        execute(context);
+        executeCommand(context);
         return "SUCCESS";
     }
     
     @Override
-    public boolean executeAsChain(PaymentParameterObject parameterObject) {
-        return false;
-    }
-
-    @Override
-    public void execute(PaymentParameterObject parameterObject) {
+    public CommandTransition executeCommand(PaymentParameterObject parameterObject) {
         if (parameterObject.isTestmode()) {
             String breadCrumb = parameterObject.getBreadCrumb();
             if (StringUtils.isEmpty(breadCrumb)) breadCrumb = "";
@@ -26,13 +21,7 @@ public class SuccessProcessCommand extends AbstractDefaultProcessCommand<Payment
             breadCrumb = breadCrumb + " => " + getProcessID();
             parameterObject.setBreadCrumb(breadCrumb);
         }
-        
-    }
-
-    @Override
-    public CommandTransition executeCommand(PaymentParameterObject parameterObject) {
-        // TODO Auto-generated method stub
-        return null;
+        return super.executeCommand(parameterObject);
     }
 
 }
