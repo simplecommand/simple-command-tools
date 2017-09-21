@@ -19,6 +19,6 @@ public class ClassLoaderCommandTest {
     @Test
     public void testReadGoodFile() throws Exception {
         final CommandTransition result = new ClassLoaderCommand().executeCommandAsChain(classPathRessource);
-        assertThat(result, is(CommandTransition.DONE));
+        assertThat(result, is(CommandTransition.FAILURE));
     }
 }

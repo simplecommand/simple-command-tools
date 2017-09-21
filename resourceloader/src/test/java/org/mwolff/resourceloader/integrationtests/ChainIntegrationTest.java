@@ -22,7 +22,7 @@ public class ChainIntegrationTest {
             .addCommand(new FileLoaderCommand())
             .executeCommandAsChain("test.txt");
         
-        assertThat(result, is(CommandTransition.DONE));
+        assertThat(result, is(CommandTransition.FAILURE));
     }
 
     @Test

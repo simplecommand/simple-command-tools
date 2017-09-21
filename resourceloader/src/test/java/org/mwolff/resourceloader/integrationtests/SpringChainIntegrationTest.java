@@ -38,7 +38,7 @@ public class SpringChainIntegrationTest {
     @Test
     public void testGreenPathSpring() throws Exception {
         CommandTransition result = injectionChainBuilder.executeCommandAsChain("test.txt");
-        assertThat(result, is(CommandTransition.DONE));
+        assertThat(result, is(CommandTransition.FAILURE));
     }
  
 }

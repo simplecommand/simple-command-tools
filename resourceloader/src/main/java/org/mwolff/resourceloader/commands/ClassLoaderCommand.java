@@ -8,11 +8,11 @@ import org.mwolff.command.chain.AbstractDefaultChainCommand;
 public class ClassLoaderCommand extends AbstractDefaultChainCommand<String>{
 
     @Override
-    public CommandTransition executeCommand(String parameterObject) {
+    public CommandTransition executeCommandAsChain(String parameterObject) {
         final String filename = parameterObject;
         final InputStream inputStream = this.getClass().getResourceAsStream("/" + filename);
         if (inputStream == null) {
-            return CommandTransition.SUCCESS;
+            return CommandTransition.NEXT;
         }
         return CommandTransition.FAILURE;
     }
