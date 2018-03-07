@@ -3,7 +3,6 @@ package org.mwolff.processdemo.commands;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
-import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 
 import junit.framework.TestCase;
