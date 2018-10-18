@@ -11,7 +11,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"classpath:application.xml"})
+//@ContextConfiguration({"classpath:application.xml"})
+@ContextConfiguration({"file:src/test/resources/application.xml"})
 public class AppConfigTest {
 
     @Resource
