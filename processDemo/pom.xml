@@ -7,7 +7,7 @@
 
 	<!-- adapt your own Spring version -->
 	<properties>
-		<springframework.version>5.3.4</springframework.version>
+		<springframework.version>5.3.14</springframework.version>
 	</properties>
 
 	<dependencies>
