@@ -8,7 +8,7 @@
 	<description>Tools for some purpose mainly velocity</description>
 
 	<properties>
-		<springframework.version>4.3.20.RELEASE</springframework.version>
+		<springframework.version>5.3.19</springframework.version>
 	</properties>
 
 	<dependencies>
